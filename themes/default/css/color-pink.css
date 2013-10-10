@@ -1,0 +1,301 @@
+@charset "UTF-8";
+/*common*/
+body{color:#666;background-image: url(../images/bgnoise_light.gif);background-repeat: repeat;background-position: top left;background-attachment: scroll;background-color: #DDD;}
+a {color:#ff6d6d;}
+a:hover{color:#e00f0f;}
+.pin {background: #F9F9F9;border: 1px solid white;}
+.cgray {color: #CCC;}
+.bg_common{background: #F1F1F1;}
+.white_bg{background: #FFF;}
+.color_bg{background: #ffe4e4;}
+.smalltxt{font-size: 12px;}
+.middletxt{font-size: 13px;}
+.colordark{color: #333;}
+.colormiddle{color: #666;}
+.colorlight{color: #999;}
+.colororange{color: #F89406;}
+.bgdark{background-color: #E1E1E1;}
+.bgmiddle{background-color: #f1f1f1;}
+.bglight{background-color: #f6f6f6;}
+.border{border: 1px solid #E1E1E1;}
+.boder-b{border-bottom: 1px solid #E1E1E1;}
+.boder-t{border-top: 1px solid #E1E1E1;}
+.border-top{border-top: #F66 solid 3px;}
+.bold{font-weight: bold;}
+input[type="text"],input[type="password"],textarea{border: 1px solid #D5D5D5;}
+em.dot, .dot {
+	font-size: 60%;
+	color: #BFBFBF;
+	display: inline-block;
+	position: relative;
+	top: -2px;
+	z-index: 1;
+	font-family: "arial";
+}
+a.link_btn,a:hover.link_btn,button,input[type="button"],input[type="submit"]{
+	background: #ff6666;
+	color: #ffffff;
+	border: 0;
+	cursor: pointer;
+	padding: 0 10px 0 10px;
+	height: 25px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+.nav-items li a:link, .nav-items li a:hover, .nav-items li a:visited, .nav-items li a:active{color: #999;font-size: 15px;font-weight: bold;}
+.nav-items li a:hover,.nav-items li.selected a{background-color: #bbb;color: #fff;}
+.profile-nav li,.taglist li a  {color: #ff5353;}
+a.selected,.tabBox .tabs .selected a,.tabBox .tabs .selected a:hover,.add-friend,.taglist li a:hover, .taglist li.active a {
+	background: #ff6666;
+	border-color: #ff6666;
+	color: #ffffff;
+}
+.header{border-bottom: 5px solid #FFB8B8;background-color: #fff;color: #FFF;}
+.friend-info a.username{color: #999;font-size: 14px;text-decoration: underline;}
+.nav-cat a:hover{background: #ff6666;border-color: #ff6666;color: #ffffff;}
+.nav-cat a.selected{background: #fff;border-color: #fff;color: #999;font-weight: bold;}
+.nav-cat a.first,.nav-cat a:hover.first{color: #F89406;background: #fff;border-color: #fff;font-weight: bold;font-size: 15px;}
+.nav-srh{border: 1px solid #ccc;color: #999;}
+.nav-srh input{color: #666;}
+span.apply-btn {border: 1px solid #ffb8b8;background: white;}
+span.apply-btn {background: #ff7f7f;color: #ffffff;}
+span.apply-btn input {background: none;color: #ffffff;}
+/*add like*/
+.like_add {background: #F69;color: #fff;}
+.like_self, .like_already {background: #faa123;color: #fff;border: 1px solid #F89406;}
+/*user profile popup*/
+.popover {background-color: white;color: #999;}
+.popover .mark_list a,.popover .info a{color: #666;}
+.popover .mark_list a:hover,.popover .info a:hover{color:#e00f0f;background-color: white;text-decoration: underline;}
+/*pin*/
+.pin .share_comments,.pin .share_people,.pin .comment,.pin .friend-info,.pin .friend-relation,.pin .share_social{background-color: #F2F0F0;}
+.pin .share_people,.pin .comment{border-top: 1px solid #FCFAFA;border-bottom: 1px solid #D9D4D4;}
+.pin .share_social{border-top: 1px solid #FCFAFA;color:#999;}
+.pin {color:#666;}
+.pin .share_desc{color:#333;}
+.pin a{color:#ABABAD;}
+.pin a:hover{color:#e00f0f;}
+.pin .share_info{color:#ABABAD;}
+.pin .share_info a{text-decoration: underline; color:#ABABAD;}
+.pin .share_info{border-bottom: 1px solid #D9D4D4;}
+.pin .other_img_info{font-size: 12px;background-color: #f0f0f0;}
+.pin .other_img_info a{font-size: 12px;color:#999;}
+.pin .other_img_info a:hover{color:#333;text-decoration: underline;}
+.share_social .shareico{background: url(../images/share_icon.png) no-repeat;cursor: pointer;display: block;overflow: hidden;text-align: left;}
+/*悬浮操作栏*/
+.userbar li.menu {background: #FFB8B8 url(../images/userbar.png) no-repeat left center;}
+.userbar li.menu ul li a{background: #FFB8B8;}
+.userbar li.menu ul li:hover a{background: #fd4343;}
+.userbar li.menu ul li a{color: #FFF;font-size: 12px;}
+/*用户页面状态*/
+.profile-nav a {background-color: #f6f6f6;color:#F89406;}
+.profile-nav a.curr,.profile-nav a:hover {background-color: #ffd08e;color:#fff;}
+/*首页分类*/
+.pic-des a{color: #FFF;font-size: 12px;}
+.pic-des a:hover,.pic-des a:active{color: #FFF;text-decoration: underline;}
+.category-header ul li a, .num-pl, .num-p2,.desc,.staruser-txt,.user-title,.more{color:#999;}
+.staruser-title{color: #666;}
+/*tag列表*/
+.taglist li a {border: 1px solid #D5D5D5;color: #F66;background-color: #F6F6F6;}
+/*上传窗口配色*/
+.dialog_upload .image_list ul li.selected{border: #F66 solid 1px;}
+.dialog_upload .image i.cover {color:#FFF;background-color: #feab34;font-style: normal;font-weight: bold;}
+/*详细页配色*/
+.share_img .goods_price {background: #ff6666;color:#fff;}
+.share_detail .share_txt p{color: #333;font-size: 14px;}
+.share_detail .comments {background: #F7F7F7;}
+.share_header h2{border-bottom: #E1E1E1 solid 1px;}
+.share_detail .comments b.arrow {border-bottom-color: #F7F7F7;}
+.share_detail .comments .reply_box .pl_area{border: 1px solid #DDD;color: #666;}
+/*评论配色*/
+.comments .pl_list .list_info p {color: #666;}
+.comments .pl_list .list_info {background: #f0f0f0;border-bottom: 1px dashed #FFF;}
+/*弹出配色*/
+.ui-dialog {background-color: white;border: 1px solid #9A9A9A;}
+.ui-dialog .hd {background-color: white;border-bottom: 2px solid #C02D0E;}
+.ui-dialog .ui-close {background-color: white;border-left: 1px solid #E8E7E3;}
+.dialog_upload .btn_select>ul li a:hover {background-color: #ff6666;color:#FFF;}
+.dialog_upload .btn_select>ul a {color: #747474;}
+.ui-dialog a:hover,.ui-dialog a:hover b {background-color: #E8E7E3;}
+.ui-mask {background-color: white;}
+/*详细页信息*/
+.side_info .info_num{background: #848484;color: #fff;}
+.side_info .info_num:hover{background: #666;}
+.info_num.red{background: #fa6398;}
+.info_num.red:hover{background: #db306c;}
+.info_num.green{background: #5dab37;}
+.info_num.green:hover{background: #489522;}
+.info_num.blue{background: #63adf9;}
+.info_num.blue:hover{background: #3489e0;}
+.side_container{background: #f7f7f7;border: #f0f0f0 solid 1px;}
+.side_content .pic_list li .txt_wrap span.info{color: #999}
+/*用户信息*/
+.share_user h4 a{color: #ce3400;}
+.share_user p{color: #999}
+.messages {background-color: #F7F7F7;}
+/*上一张 下一张*/
+a.steam_next{background: url(../images/right_botton.png) no-repeat;}
+a.steam_next.none{background: url(../images/right_botton_1.png) no-repeat;}
+a.steam_prev{background: url(../images/left_botton.png) no-repeat;}
+a.steam_prev.none{background: url(../images/left_botton_1.png) no-repeat;}
+/*icon*/
+.icon_like{background:url(../images/icon_like.png) right center no-repeat;}
+.icon_click{background:url(../images/icon_click.png) right center no-repeat;}
+.icon_comment{background:url(../images/icon_comment.png) right center no-repeat;}
+.icon_share{background:url(../images/icon_share.png) center center no-repeat;}
+/*usercontrol*/
+.usercontrol{border-top:#faa123 5px solid;}
+.usercontrol .menu li a {color: #F89406;}
+.usercontrol .menu li.active .menu_child li a {color:#a89c77;background:#f3f3f3;border-top:#e0e0e0 solid 1px;}
+.usercontrol .menu li.active .menu_child li.active a {background:#e5e5e5;color:#faa123;}
+/*addlike*/
+a.btn_like, a.btn_share, a.btn_comment {border: 1px solid #D4D4D4;color: #AAA;background-color: #F6F6F6;}
+a.btn_like:hover,a.btn_share:hover,a.btn_comment:hover{background-color: #faa123;color: #fff;border: 1px solid #F89406;}
+#BackToTop {color: #fff;background-color: #faa123;border: 1px solid #F89406;}
+.friendlink a{color: #999;}
+.alert {padding: 8px 35px 8px 14px;margin-bottom: 18px;color: #C09853;text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);background-color: #FCF8E3;border: 1px solid #FBEED5;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;}
+.alert-info {color: #3A87AD;background-color: #D9EDF7;border-color: #BCE8F1;}
+.alert-danger, .alert-error {color: #B94A48;background-color: #F2DEDE;border-color: #EED3D7;}
+.alert-success {color: #468847;background-color: #DFF0D8;border-color: #D6E9C6;}
+.alert .close {position: relative;top: -2px;right: -21px;line-height: 18px;}
+.message-info {color: #fff;background-color: #3A87AD;}
+.message-danger, .message-error {color: #fff;background-color: #ff6666;}
+.message-success {color: #fff;background-color: #468847;}
+.message-tip {color: #fff;background-color: #F89406;}
+.message-loading {color: #fff;background-color: #999;}
+.ui-message .ui-close{color: #ddd;}
+.ui-message .ui-close:hover{color: #666;}
+/*setting bind*/
+.page-content .bind a{color:#FFF;background: #F89406;}
+.page-content .bind a:hover{color:#FFF;background: #FFD08E;}
+/*css for faq page*/
+.faq h2 {background-color: #FFFFED;}
+.faq .faq_nav li.selected a,.faq .number {color: #000;font-weight: 700;}
+/*nav tabs*/
+.nav-tabs {border-bottom: 1px solid #DDD;}
+.dropdown-menu li > a:hover,
+.dropdown-menu .active > a,
+.dropdown-menu .active > a:hover {background-image:none;color: #ffffff;text-decoration: none;background-color: #ff6d6d;text-shadow: none;filter:none;}
+/*progress*/
+@-webkit-keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+@-moz-keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+@-ms-keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+@-o-keyframes progress-bar-stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 40px 0;
+  }
+}
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+.progress {
+  height: 18px;
+  overflow: hidden;
+  background-color: #f7f7f7;
+  background-image: -moz-linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-image: -ms-linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#f9f9f9));
+  background-image: -webkit-linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-image: -o-linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-image: linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-repeat: repeat-x;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#f9f9f9', GradientType=0);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.progress .bar {
+  width: 0;
+  height: 18px;
+  font-size: 12px;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-image: -moz-linear-gradient(top, #149bdf, #0480be);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#149bdf), to(#0480be));
+  background-image: -webkit-linear-gradient(top, #149bdf, #0480be);
+  background-image: -o-linear-gradient(top, #149bdf, #0480be);
+  background-image: linear-gradient(top, #149bdf, #0480be);
+  background-image: -ms-linear-gradient(top, #149bdf, #0480be);
+  background-repeat: repeat-x;
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+     -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+          box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: width 0.6s ease;
+     -moz-transition: width 0.6s ease;
+      -ms-transition: width 0.6s ease;
+       -o-transition: width 0.6s ease;
+          transition: width 0.6s ease;
+}
+.progress.active .bar {
+  -webkit-animation: progress-bar-stripes 2s linear infinite;
+     -moz-animation: progress-bar-stripes 2s linear infinite;
+      -ms-animation: progress-bar-stripes 2s linear infinite;
+       -o-animation: progress-bar-stripes 2s linear infinite;
+          animation: progress-bar-stripes 2s linear infinite;
+}
+.progress-striped .bar {
+  background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+  background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  -webkit-background-size: 40px 40px;
+     -moz-background-size: 40px 40px;
+       -o-background-size: 40px 40px;
+          background-size: 40px 40px;
+}
+.progress-danger .bar {
+  background-color: #dd514c;
+}
+.progress-success .bar {
+  background-color: #5eb95e;
+}
+.progress-info .bar {
+  background-color: #4bb1cf;
+}
+.progress-warning .bar {
+  background-color: #faa732;
+}

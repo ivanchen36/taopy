@@ -1,0 +1,96 @@
+@charset "UTF-8";
+/* CSS Document */
+.w960 {
+	width: 960px;
+}
+/*浮动*/
+.f_l {
+	float: left;
+}
+.f_r {
+	float: right;
+}
+/*清除浮动*/
+.c_b {
+	clear: both;
+}
+/**/
+.of_h {
+	overflow: hidden;
+}
+/*外边距*/
+.ml10 {
+	margin-left: 10px;
+}
+.ml20 {
+	margin-left: 20px;
+}
+.ml30 {
+	margin-left: 30px;
+}
+.mt10 {
+	margin-top: 10px;
+}
+.mt20 {
+	margin-top: 20px;
+}
+.mt30 {
+	margin-top: 30px;
+}
+.mt40 {
+	margin-top: 40px;
+}
+.mb10 {
+	margin-bottom: 10px;
+}
+.mb20 {
+	margin-bottom: 20px;
+}
+.mb30 {
+	margin-bottom: 30px;
+}
+.mr10 {
+	margin-right: 10px;
+}
+.mr20 {
+	margin-right: 20px;
+}
+.mr30 {
+	margin-right: 30px;
+}
+.pl10 {
+	padding-left: 10px;
+}
+.pr10 {
+	padding-right: 10px;
+}
+.pb10 {
+	padding-bottom: 10px;
+}
+.pt10 {
+	padding-top: 10px;
+}
+.pb20 {
+	padding-bottom: 20px;
+}
+.pt20 {
+	padding-top: 20px;
+}
+/*overflow*/
+.of_h {
+	overflow: hidden;
+}
+/*hide*/
+.hide {
+	display: none;
+}
+
+.text_c{
+	text-align: center;
+}
+.text_r{
+	text-align: right;
+}
+.block{
+	display: block;
+}

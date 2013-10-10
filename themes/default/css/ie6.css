@@ -1,0 +1,137 @@
+.ui-mask {
+	position: absolute;
+}
+
+.ui-dialog {
+	position: absolute;
+}
+
+.ui-dialog .ui-close {
+	display: block;
+	zoom: 1;
+	overflow: hidden;
+}
+
+.ui-mask {
+	position: absolute;
+	z-index: 100;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	opacity: .7;
+	filter: alpha(opacity=70);
+}
+
+.category-header h4, .category-header h5, .category-header ul, .category-header li, .category-header li a {
+	float:left;
+	display:inline;
+}
+.userbar ul, .userbar li.menu, .userbar li.menu a, .userbar li.menu a.parent{
+	float:left;
+	display:inline;
+}
+.userbar li.menu{
+	position: relative;
+}
+.userbar li.menu ul{
+	position: absolute;
+}
+.userbar li,.userbar li a,.nav-tabs{
+	display:inline !important;
+}
+.login_left{
+	position: relative;
+}
+.login_left .form{
+	position: relative;
+}
+.steam_prev,.steam_next,.arrow,#bbs_login,#BackToTop,#loginTab{
+	display: none !important;
+}
+.nav-items li a:hover, .nav-items li.selected{
+color: white;
+}
+.g80, .g160, .g240, .g225, .g320, .g400, .g480, .g560, .g640, .g720, .g800, .g880, .g960 {
+margin-left: 0px;
+}
+.pin .shareface, .pin .shareinfo,.pin .shareface a, .pin .shareface img {
+display: inline;
+float: left;
+}
+.pin .share_comments {
+	display: none;	
+}
+.pin .share_people, .pin .comment{
+	height: 40px;
+}
+#loading {
+	position: absolute;
+	width: 100%;
+	height: 800px;
+}
+
+#loading div {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 16em;
+	height: 50px;
+	margin: -25px 0 0 -8em;
+	line-height: 50px;
+	text-align: center;
+	background-color: #fff;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#999999,direction=135,strength=3);
+}
+
+.btn_mini i {
+	height: 18px;
+}
+
+.btn_select ul {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	margin-top: -1px;
+	width: 360px;
+	max-height: 240px;
+	overflow: auto;
+	display: none;
+	border: 1px solid #bbb;
+	background-color: #fff;
+	-moz-box-shadow: 0 0 10px #aaa;
+	-webkit-box-shadow: 0 0 10px #aaa;
+	box-shadow: 0 0 10px #aaa;
+}
+
+.btn_select ul li {
+	border-bottom: 1px solid #ddd;
+}
+
+.btn_select ul .co a:hover {
+	background-position: 300px -26px;
+}
+
+.btn_select ul a {
+	display: block;
+	padding: 0 1em;
+	line-height: 2;
+	color: #747474;
+}
+.btn_select ul a:hover {
+	text-decoration: none;
+	background-color: #a20806;
+	color: #fff;
+}
+.btn_select_hover ul {
+	display: block;
+}
+.auth_mk .signup li span.tips,.dialog-login .auth_mk .signup li span.tips{
+	display: block;
+	zoom: 1;
+	width: 100%;
+}

@@ -1,0 +1,26 @@
+2013-10-03 11:23:51 113.116.29.25   social@callback /home/ivan/web/tao/controller/social.php on line 20	DEBUG: 这里记录一个调试信息
+2013-10-03 11:47:24 113.116.29.25   social@callback /home/ivan/web/tao/controller/social.php on line 22	DEBUG: Sina
+2013-10-03 16:31:08 113.116.29.25   pin@index /home/ivan/web/tao/controller/pin.php on line 15	DEBUG: 
+2013-10-03 16:32:40 113.116.29.25   pin@index /home/ivan/web/tao/controller/pin.php on line 15	DEBUG: 
+2013-10-03 16:35:34 113.116.29.25   pin@index /home/ivan/web/tao/controller/pin.php on line 15	DEBUG: 
+2013-10-03 16:37:15 113.116.29.25   pin@index /home/ivan/web/tao/controller/pin.php on line 15	DEBUG: 
+2013-10-03 16:37:40 113.116.29.25   pin@index /home/ivan/web/tao/controller/pin.php on line 15	DEBUG: 9
+2013-10-03 16:37:56 113.116.29.25   pin@index /home/ivan/web/tao/controller/pin.php on line 15	DEBUG: 
+2013-10-03 16:39:26 113.116.29.25   pin@index /home/ivan/web/tao/controller/pin.php on line 15	DEBUG: Array
+2013-10-03 16:40:57 113.116.29.25   pin@index /home/ivan/web/tao/controller/pin.php on line 15	DEBUG: 9|静因之道||/data/avatars/000/00/00/09_avatar||||1||1
+2013-10-03 16:46:14 113.116.29.25   pin@index /home/ivan/web/tao/controller/pin.php on line 15	DEBUG: 
+2013-10-03 16:51:54 113.116.29.25   pin@index /home/ivan/web/tao/controller/pin.php on line 15	DEBUG: 
+2013-10-03 16:53:47 113.116.29.25   pin@index /home/ivan/web/tao/controller/pin.php on line 15	DEBUG: 
+2013-10-03 16:54:01 113.116.29.25   pin@index /home/ivan/web/tao/controller/pin.php on line 15	DEBUG: Array
+2013-10-03 16:54:44 113.116.29.25   pin@index /home/ivan/web/tao/controller/pin.php on line 15	DEBUG: user_id|nickname|email|avatar_local|password|uc_id|is_star|is_social|is_shop|user_type
+2013-10-03 17:07:42 113.116.29.25   social@callback /home/ivan/web/tao/controller/social.php on line 110	DEBUG: test1   user_id|email|passwd|nickname|gender|province|city|location|user_title|bio|is_active|create_time|total_shares|total_albums|total_likes|total_favorite_shares|avatar_local|avatar_remote|lost_password_key|lost_password_expire|is_social|user_type|is_deleted
+2013-10-03 17:07:43 113.116.29.25   pin@index /home/ivan/web/tao/controller/pin.php on line 15	DEBUG: user_id|nickname|email|avatar_local|password|uc_id|is_star|is_social|is_shop|user_type
+2013-10-03 17:11:50 113.116.29.25   webuser@logout /home/ivan/web/tao/extensions/UserLib.php on line 64	DEBUG: test1   user_id|nickname|email|avatar_local|password|uc_id|is_star|is_social|is_shop|user_type
+2013-10-03 17:11:51 113.116.29.25   welcome@index /home/ivan/web/tao/extensions/UserLib.php on line 64	DEBUG: test1   
+2013-10-03 17:11:51 113.116.29.25   welcome@index /home/ivan/web/tao/extensions/UserLib.php on line 74	DEBUG: test2   
+2013-10-03 17:11:53 113.116.29.25   social@go /home/ivan/web/tao/extensions/UserLib.php on line 64	DEBUG: test1   
+2013-10-03 17:11:53 113.116.29.25   social@go /home/ivan/web/tao/extensions/UserLib.php on line 74	DEBUG: test2   
+2013-10-03 17:11:54 113.116.29.25   social@callback /home/ivan/web/tao/extensions/UserLib.php on line 64	DEBUG: test1   
+2013-10-03 17:11:54 113.116.29.25   social@callback /home/ivan/web/tao/extensions/UserLib.php on line 74	DEBUG: test2   
+2013-10-03 17:11:55 113.116.29.25   pin@index /home/ivan/web/tao/extensions/UserLib.php on line 64	DEBUG: test1   user_id|nickname|email|avatar_local|password|uc_id|is_star|is_social|is_shop|user_type
+2013-10-03 17:15:08 113.116.29.25   social@callback /home/ivan/web/tao/extensions/UserLib.php on line 27	DEBUG: test  user_id|email|passwd|nickname|gender|province|city|location|user_title|bio|is_active|create_time|total_shares|total_albums|total_likes|total_favorite_shares|avatar_local|avatar_remote|lost_password_key|lost_password_expire|is_social|user_type|is_deleted
