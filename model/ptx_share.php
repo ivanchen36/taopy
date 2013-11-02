@@ -42,7 +42,7 @@ class ptx_share extends spModel
 			'enabled' => false     
 	)
 	);
-	var $select_fields = " ptx_share.*,user.user_title,user.bio,detail.item_id,detail.is_show,detail.img_pro,detail.images_array,detail.title,detail.intro,detail.keywords,detail.image_path,detail.share_attribute,detail.share_type,detail.price,detail.reference_url,detail.promotion_url,detail.total_images,category.category_name_cn,album.album_title ";
+	var $select_fields = " ptx_share.*,user.user_title,user.bio,user.avatar_remote,detail.item_id,detail.is_show,detail.img_pro,detail.images_array,detail.title,detail.intro,detail.keywords,detail.image_path,detail.share_attribute,detail.share_type,detail.price,detail.reference_url,detail.promotion_url,detail.total_images,category.category_name_cn,album.album_title ";
 
 	private function init_conditions($conditions){
 		$conditions_item = ' detail.is_deleted=0 ';
@@ -57,7 +57,10 @@ class ptx_share extends spModel
 			$keyword = self::quote($conditions['keyword']);
 			$conditions_item .= "AND MATCH (detail.intro_search) AGAINST ({$keyword} IN BOOLEAN MODE) ";
 		}
-		if(isset($conditions['category_id'])){
+		if(isset($conditions['category_tag'])){
+			$conditions_share .= 'AND ptx_share.category_tag=\''.$conditions['category_tag'].'\' ';
+		}
+		else if(isset($conditions['category_id'])){
 			$conditions_share .= 'AND ptx_share.category_id=\''.$conditions['category_id'].'\' ';
 		}
 		if(isset($conditions['user_id'])){

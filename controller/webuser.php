@@ -53,7 +53,7 @@ class webuser extends basecontroller
 			$ptx_user = spClass('ptx_user');
 			$user = $ptx_user->getuser_byid($this->user_id);
 			$user['passwd'] = '';
-			$user['avatar'] = useravatar($user['user_id'], 'middle');
+			$user['avatar'] = $user['avatar_remote'];
 			$user['home'] = spUrl('pub','index',array('uid'=>$this->user_id));
 			$shares = $ptx_share->search_no_page(array('user_id'=>$this->user_id),null,null,12);
 			foreach ($shares as $key=>$s) {

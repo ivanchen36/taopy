@@ -37,7 +37,7 @@ class ptx_comment extends spModel
 		)
 	);
 	
-	var $select_fields = " ptx_comment.comment_id,ptx_comment.share_id,ptx_comment.comment_txt,ptx_comment.create_time,user.user_id,user.nickname ";
+	var $select_fields = " ptx_comment.comment_id,ptx_comment.share_id,ptx_comment.comment_txt,ptx_comment.create_time,user.user_id,user.nickname,user.avatar_remote ";
 
 	private function init_conditions($conditions){
 		if(isset($conditions['keyword'])){

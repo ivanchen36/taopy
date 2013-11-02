@@ -36,7 +36,7 @@
 				<?php endif;?>
 			</div>
 			<div class="share_people">
-				<div class="shareface"><a target="_blank" data-user-id="<?php echo $share['user_id'];?>" data-user-profile="1" href="<?php echo spUrl('pub','index',array('uid'=>$share['user_id']));?>" class="trans07" data-user-id="<?php echo $share['user_id'];?>" data-user-profile="1"><img src="<?php echo useravatar($share['user_id'], 'middle')?>" onerror="javascript:this.src = base_url + '/assets/img/avatar_small.jpg';" width="30" height="30"/></a> </div>
+            <div class="shareface"><a target="_blank" data-user-id="<?php echo $share['user_id'];?>" data-user-profile="1" href="<?php echo spUrl('pub','index',array('uid'=>$share['user_id']));?>" class="trans07" data-user-id="<?php echo $share['user_id'];?>" data-user-profile="1"><img src="<?php echo $share['avatar_remote'];?>" onerror="javascript:this.src = base_url + '/assets/img/avatar_small.jpg';" width="30" height="30"/></a> </div>
 				<div class="shareinfo"> 
 					<p><a target="_blank" href="<?php echo spUrl('pub','index',array('uid'=>$share['user_id']));?>" data-user-id="<?php echo $share['user_id'];?>" data-user-profile="1"><?php echo $share['user_nickname'];?></a> <?php echo ($share['user_id']==$share['poster_id'])?T('share'):T('forward');?><?php echo T('to');?> <a target="_blank" href="<?php echo spUrl("baseuser","album_shares", array("aid"=> $share['album_id']));?>"><?php echo $share['album_title'];?></a> </p>
 				</div>
@@ -47,29 +47,19 @@
 		 		$comments=($comments)?array_slice($comments,0,$comment_num):null;?>
 		  		<?php foreach ( $comments as $comment): ?>
 				<div class="comment">
-					<div class="shareface"><a class="trans07" href="<?php echo spUrl('pub','index',array('uid'=>$comment['user_id']));?>" data-user-id="<?php echo $comment['user_id'];?>" data-user-profile="1"><img src="<?php echo useravatar($comment['user_id'], 'middle');?>" onerror="javascript:this.src = base_url + '/assets/img/avatar_small.jpg';" width="30" height="30"></a></div>
+					<div class="shareface"><a class="trans07" href="<?php echo spUrl('pub','index',array('uid'=>$comment['user_id']));?>" data-user-id="<?php echo $comment['user_id'];?>" data-user-profile="1"><img src="<?php echo $comment['avatar_remote'];?>" onerror="javascript:this.src = base_url + '/assets/img/avatar_small.jpg';" width="30" height="30"></a></div>
 					<div class="shareinfo"><a href="<?php echo spUrl('pub','index',array('uid'=>$comment['user_id']));?>" data-user-id="<?php echo $comment['user_id'];?>" data-user-profile="1"><?php echo $comment['nickname'];?></a><p><?php echo parse_message(sysSubStr($comment['comment_txt'],50,true));?></p></div>
 				</div>
 				<?php endforeach; ?>
 			</div>
 			<div class="share_comments commentdiv hide" id="<?php echo $share['share_id'].'_commentdiv'?>">
 		  		<div class="comment">
-					<div class="shareface"><img src="<?php echo base_url().$current_user['avatar_local'].'_middle.jpg'?>" onerror="javascript:this.src = base_url + '/assets/img/avatar_small.jpg';" width="30" height="30" /></div>
+					<div class="shareface"><img src="<?php echo $current_user['avatar_remote'] ?>" onerror="javascript:this.src = base_url + '/assets/img/avatar_small.jpg';" width="30" height="30" /></div>
 					<div class="shareinfo">
 					<textarea id="<?php echo $share['share_id'].'_commentbox'?>" rows="2" class="borderclass" onkeyup="javascript:strLenCalc(this, '<?php echo $share['share_id'];?>checklen', 140);"></textarea>
 					<span class="smalltxt"><i id="<?php echo $share['share_id'];?>checklen">140</i>/140</span><button data-action="addComment" data-params="<?php echo $share['share_id'];?>,comment_waterfall_tpl" class="graybtn f_r"><?php echo T('comment');?></button>
 					</div>
 				</div>
-			</div>
-			<div class="share_social">
-				<span class="prompt f_l"><?php echo T('social_forward');?>：</span>
-				<?php if($lang=='zh_cn'):?>
-				<span data-action="socialShare" data-params="<?php echo $share['share_id'];?>,sina" class="shareico shareico_sina"></span>
-				<span data-action="socialShare" data-params="<?php echo $share['share_id'];?>,qq" class="shareico shareico_qq"></span>
-				<span data-action="socialShare" data-params="<?php echo $share['share_id'];?>,qzone" class="shareico shareico_qzone"></span>
-				<span data-action="socialShare" data-params="<?php echo $share['share_id'];?>,renren" class="shareico shareico_renren"></span>
-				<?php endif;?>
-				<span data-action="socialShare" data-params="<?php echo $share['share_id'];?>,twitter" class="shareico shareico_twitter"></span>
 			</div>
 		</div>
 		<?php endif;?>

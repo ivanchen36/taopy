@@ -26,7 +26,7 @@ class detail extends basecontroller
 			$this->page_title = sysSubStr($this->share['title'],100,false).' '.$this->share['category_name_cn'];
 			$this->page_description = sysSubStr($this->share['intro'],400,false);
 			$this->page_keyword = sysSubStr($this->share['keywords'],200,false).' '.$this->share['category_name_cn'];
-			$this->favorite_list = $ptx_favorite_sharing->search(array('share_id'=>$share_id),1,20,' user.user_id as uid,user.avatar_local as avatar,user.nickname as nickname, ptx_favorite_sharing.create_time as create_time ');
+			$this->favorite_list = $ptx_favorite_sharing->search(array('share_id'=>$share_id),1,20,' user.user_id as uid,user.avatar_remote as avatar,user.nickname as nickname, ptx_favorite_sharing.create_time as create_time ');
 			$this->share_intro = parse_message($this->share['intro'],true);
 			if($this->settings['ui_detail']['detail_may_like']){
 				$round_shares = $ptx_share->get_round($this->share['category_id'],30);
@@ -61,7 +61,7 @@ class detail extends basecontroller
 			$comments = array();
 			foreach ($rs as $comment) {
 				$comment['post_time_friend'] = friendlyDate($comment['create_time']);
-				$comment['user_avatar'] = useravatar($comment['user_id'], 'middle');
+				$comment['user_avatar'] = $comment['avatar_remote'];
 				$comment['comment_txt'] = parse_message($comment['comment_txt']);
 				$comments[] = $comment;
 			}

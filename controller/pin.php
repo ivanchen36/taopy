@@ -14,6 +14,7 @@ class pin extends basecontroller
 	public function index(){
 		$num_per_page = $this->settings['ui_layout']['pin_pagenum'];
 		$num_per_page = $num_per_page?$num_per_page:15;
+		$this->tg =  $this->spArgs("tg");
 		$tag =  $this->spArgs("tag");
 		$keyword =  $this->spArgs("keyword");
 		$wf =  $this->spArgs("wf");
@@ -28,26 +29,33 @@ class pin extends basecontroller
 
 		$args = array("page"=>"2","wf"=>"1");
 		if($this->category_id){
-			$conditions['category_id'] = $this->category_id;
-			$args['cat']=$this->category_id;
-			$ptx_category = spClass("ptx_category");
-			$category = $ptx_category->find_category_byid($this->category_id);
-			$this->seo_title($category['category_name_cn']);
-			$this->seo_keyword(sysSubStr(str_replace(',', ' ', $category['category_hot_words']),100));
-		}
-		if($tag){
+            if($this->tg)
+            {
+                $conditions['category_tag'] = $this->tg;
+                $args['tg']=$this->tg;
+            }else
+            {
+                $conditions['category_id'] = $this->category_id;
+            }
+            $args['cat']=$this->category_id;
+            $ptx_category = spClass("ptx_category");
+            $category = $ptx_category->find_category_byid($this->category_id);
+            $this->seo_title($category['category_name_cn']);
+            $this->seo_keyword(sysSubStr(str_replace(',', ' ', $category['category_hot_words']),100));
+        }
+        if($tag){
 			$tag = safeEncoding($tag);
 			$conditions['keyword'] = $segment->convert_to_py($tag);
 			$args['tag']=$tag;
-			$this->seo_title($tag);
-			$this->seo_keyword($tag);
+			//$this->seo_title($tag);
+			//$this->seo_keyword($tag);
 		}
 		if($keyword){
 			$keyword = safeEncoding($keyword);
 			$conditions['keyword'] = $segment->convert_to_py($keyword);
 			$args['keyword']=$keyword;
-			$this->seo_title($keyword);
-			$this->seo_keyword($keyword);
+			//$this->seo_title($keyword);
+			//$this->seo_keyword($keyword);
 		}
 
 		$this->nextpage_url = spUrl("pin","index", $args);
@@ -56,6 +64,7 @@ class pin extends basecontroller
 		$shares = $this->add_ads($shares);
 		$this->waterfallView($shares,'pin');
 		$need_header_footer = ($wf=='1')?false:true;
+        //spClass('spLog')->debug($category['category_name_cn']);
 		$this->ouput("/pin/index.php",$need_header_footer);
 	}
 

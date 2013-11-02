@@ -187,10 +187,10 @@ class social extends basecontroller {
 			$imagelib->create_thumb($file_path, 'middle', 50,50);
 			$imagelib->create_thumb($file_path, 'small', 16,16);
 			//update local avatar
-			$user_update['avatar_local'] = $avatar_info['dir'].$avatar_info['filename'];
+			//$user_update['avatar_local'] = $avatar_info['dir'].$avatar_info['filename'];
 			return $ptx_user->update(array('user_id'=>$uid),$user_update);
 		}else{
-			$user_update['avatar_local'] = $this->user_lib->create_default_avatar($uid);
+			//$user_update['avatar_local'] = $this->user_lib->create_default_avatar($uid);
 			return $ptx_user->update(array('user_id'=>$uid),$user_update);
 		}
 		return false;

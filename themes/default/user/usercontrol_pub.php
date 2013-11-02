@@ -1,7 +1,7 @@
 <?php if($user['user_id']):?>
 <div class="usercontrol pin scroll white_bg">
  	<div class="userbox">
-	    <div class="avatar"><a href="javascript:void(0);"><img src="<?php echo useravatar($user['user_id'], 'middle');?>" onerror="javascript:this.src = base_url + '/assets/img/avatar_middle.jpg';" /></a></div>
+	    <div class="avatar"><a href="javascript:void(0);"><img src="<?php echo $user['avatar_remote'];?>" onerror="javascript:this.src = base_url + '/assets/img/avatar_middle.jpg';" /></a></div>
 	    <div class="info ml10"><a href="javascript:void(0);"><strong class="colororange"><?php echo $user['nickname'];?></strong></a>
 	      <p class="smalltxt"><?php echo $user['user_title'];?></p>
 	      <p class="smalltxt"><?php echo T($user['gender'])?> <?php echo ($user['province']) ? $user['province'].'-'.$user['city'] : T('earth');?></p>

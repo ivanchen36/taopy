@@ -68,13 +68,13 @@ class basecontroller extends spController
 
 	public function set_js_tpl($tpl=null){
 		$this->tpl_js = $this->render('/js_tpl/login_box_tpl.php');
-		$this->tpl_js .= $this->render('/js_tpl/register_box_tpl.php');
+		//$this->tpl_js .= $this->render('/js_tpl/register_box_tpl.php');
 		$this->tpl_js .= $this->render('/js_tpl/publish_tpl.php');
 		$this->tpl_js .= $this->render('/js_tpl/comment_tpl.php');
-		$this->tpl_js .= $this->render('/js_tpl/avatar_tpl.php');
+		//$this->tpl_js .= $this->render('/js_tpl/avatar_tpl.php');
 		$this->tpl_js .= $this->render('/js_tpl/crop_dialog_tpl.php');
 		$this->tpl_js .= $this->render('/js_tpl/push_dialog_tpl.php');
-		$this->tpl_js .= $this->render('/js_tpl/tags_pop_tpl.php');
+		//$this->tpl_js .= $this->render('/js_tpl/tags_pop_tpl.php');
 		$this->tpl_js .= $this->render('/js_tpl/user_profile_tpl.php');
 	}
 

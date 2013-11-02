@@ -34,16 +34,6 @@
                     <a href="javascript:void(0);" data-action="addLike" data-params="<?php echo $share['share_id'];?>"><?php echo T('like');?></a>(<?php echo $share['total_likes'];?>) 
                     <a href="javascript:void(0);"><?php echo T('comment');?></a>(<?php echo $share['total_comments'];?>) 
                     </div>
-                    <div class="share_social f_r">
-						<span class="prompt f_l"><?php echo T('social_forward');?>:</span>
-						<?php if($lang=='zh_cn'):?>
-						<span data-action="socialShare" data-params="share_detail,sina" class="shareico shareico_sina"></span>
-						<span data-action="socialShare" data-params="share_detail,qq" class="shareico shareico_qq"></span>
-						<span data-action="socialShare" data-params="share_detail,qzone" class="shareico shareico_qzone"></span>
-						<span data-action="socialShare" data-params="share_detail,renren" class="shareico shareico_renren"></span>
-						<?php endif;?>
-						<span data-action="socialShare" data-params="<?php echo $share['share_id'];?>,twitter" class="shareico shareico_twitter"></span>
-					</div>
                 </div>
                 
     			
@@ -137,7 +127,7 @@
 	            
 	            <div class="side_container side_bd mt20">
 		            <div class="share_user"> 
-		               <div class="share_avatar"><a href="<?php echo spUrl('pub','index',array('uid'=>$share['user_id']));?>"><img src="<?php echo useravatar($share['user_id'], 'large');?>" onerror="javascript:this.src = base_url + '/assets/img/avatar_large.jpg';"></a></div>
+                    <div class="share_avatar"><a href="<?php echo spUrl('pub','index',array('uid'=>$share['user_id']));?>"><img src="<?php echo $share['avatar_remote'];?>" onerror="javascript:this.src = base_url + '/assets/img/avatar_large.jpg';"></a></div>
 		               <div>
 		                  <h4><a href="<?php echo spUrl('pub','index',array('uid'=>$share['user_id']));?>"><?php echo $share['user_nickname'];?></a></h4><span class="f_r"><?php echo $relation;?></span>
 		                  <span><?php echo $share['user_title'];?></span>
@@ -197,7 +187,7 @@
 			       			<li>
 			       			<?php foreach ($favorite_list as $favorite):?>
 			                	<a href="<?php echo spUrl('pub','index',array('uid'=>$favorite['uid']));?>" title="<?php echo $favorite['nickname']?>">
-			                    <img height="50" width="50" src="<?php echo base_url().$favorite['avatar'].'_middle.jpg'?>" onerror="javascript:this.src = base_url + '/assets/img/avatar_middle.jpg';"/></a>
+			                    <img height="50" width="50" src="<?php echo $favorite['avatar']?>" onerror="javascript:this.src = base_url + '/assets/img/avatar_middle.jpg';"/></a>
 			       			<?php endforeach;?>
 			        		</li>
 			    		</ul>

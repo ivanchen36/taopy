@@ -27,8 +27,7 @@
 	<?php echo !$category_id?'class="selected"':'';?>
 		href="<?php echo spUrl($current_controller,$current_action);?>"><?php echo T('all_category');?></a>
 		<?php foreach ($categories as $category):?>
-	<em class="dot">●</em> <a data-tags="1" data-category-id="<?php echo $category['category_id'];?>"
-	<?php echo $category_id==$category['category_id']?'class="selected"':'';?>
+	<em class="dot">●</em> <a <?php echo $category_id==$category['category_id']?'class="selected"':'';?>
 		href="<?php echo spUrl($current_controller,$current_action, array("cat"=>$category['category_id'])); ?>"><?php echo $category['category_name_cn'] ?>
 	</a>
 	<?php endforeach;?>

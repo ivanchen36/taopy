@@ -396,7 +396,7 @@ class share extends basecontroller {
 			$new_comment['post_time_friend'] = friendlyDate($new_comment['create_time']);
 			$new_comment['comment_id'] = $result;
 			$new_comment['nickname'] = $this->current_user['nickname'];
-			$new_comment['user_avatar'] = useravatar($new_comment['user_id'], 'middle');
+			$new_comment['user_avatar'] = $this->current_user['avatar_remote'];
 			$new_comment['comment_txt'] = parse_message($new_comment['comment_txt']);
 
 			$this->ajax_success_response($new_comment, T('comment_succeed'));

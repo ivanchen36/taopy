@@ -1,22 +1,19 @@
 <?php echo $tpl_header; ?>
 <div class="clear"></div>
 <div id="waterfall_outer" data-fullscreen="<?php echo $settings['ui_layout']['pin_auto']?1:0;?>" class="main">
-	<div class="g960" id="waterfall" data-pin-width="235" data-animated="0">
-		<?php if($tag_group):?>
-		<div class="pin border-top">
-			<div class="tagbox">
-			   <?php foreach ($tag_group as $group):?>
-			  <div class="tag_title"><a href="<?php echo spUrl("pin","tgroup", array('tg'=>$group['tag_id']));?>"><strong><?php echo $group['tag_group_name_cn'];?></strong></a></div>
+        <?php if($tag_group):?>
+			<div class="tagbox" style="margin-left:10px;">
+			  <div class="tag_title">
 				<ul class="taglist">
-				<?php $tags = explode(',',$group['tags']) ?>
-				<?php foreach($tags as $tag):?>
-				<li><a href="<?php echo spUrl("pin","index", array("tag"=> trim($tag)));?>"><?php echo trim($tag);?></a></li>
-				<?php endforeach; ?>
+                  <li <?php if(!$tg):?> class="active" <?php endif;?> ><a href="<?php echo spUrl('pin','index',array("cat"=>$category_id));?>">全部</a></li>
+   			      <?php foreach ($tag_group as $group):?>
+                  <li <?php if($tg == $group['tag_id']):?> class="active" <?php endif;?> ><a href="<?php echo spUrl("pin","index", array("cat"=>$category_id, 'tg'=>$group['tag_id']));?>"><?php echo $group['tag_group_name_cn'];?></a></li>
+				  <?php endforeach; ?>
 				</ul>
-				<?php endforeach; ?>
+              </div>
 			</div>
-		</div>
 		<?php endif;?>
+	<div class="g960" id="waterfall" data-pin-width="235" data-animated="0">
 		<?php echo $tpl_waterfall; ?>
 	</div>
 </div>

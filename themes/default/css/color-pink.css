@@ -70,7 +70,7 @@ span.apply-btn input {background: none;color: #ffffff;}
 .popover .mark_list a:hover,.popover .info a:hover{color:#e00f0f;background-color: white;text-decoration: underline;}
 /*pin*/
 .pin .share_comments,.pin .share_people,.pin .comment,.pin .friend-info,.pin .friend-relation,.pin .share_social{background-color: #F2F0F0;}
-.pin .share_people,.pin .comment{border-top: 1px solid #FCFAFA;border-bottom: 1px solid #D9D4D4;}
+.pin .share_people,.pin .comment{border-top: 1px solid #FCFAFA;}
 .pin .share_social{border-top: 1px solid #FCFAFA;color:#999;}
 .pin {color:#666;}
 .pin .share_desc{color:#333;}

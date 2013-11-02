@@ -76,7 +76,7 @@ $.ajax({
       		<li <?php echo ($current_controller == 'welcome') ? 'class="selected"':'';?>><a href="<?php echo spUrl("welcome","index"); ?>"><?php echo T('home');?></a><b></b></li>
      		<li <?php echo ($current_controller == 'pin' || $current_controller == 'detail')?'class="selected"':'';?>><a href="<?php echo spUrl("pin","index"); ?>"><?php echo T('pin');?></a><b></b></li>
 	   		<li <?php echo ($current_controller == 'album')?'class="selected"':'';?>><a href="<?php echo spUrl("album","index");?>"><?php echo T('album');?></a><b></b></li>
-	   		<li <?php echo ($current_controller == 'faq')?'class="selected"':'';?>><a href="<?php echo spUrl("faq","about_us"); ?>"><?php echo T('others');?></a><b></b></li>
+	   		<!-- <li <?php echo ($current_controller == 'faq')?'class="selected"':'';?>><a href="<?php echo spUrl("faq","about_us"); ?>"><?php echo T('others');?></a><b></b></li> -->
     	</ul>
 	</div>
 	<div class="userbar <?php echo $current_user['user_id']?'logged':''?>" id="userbar" style="display: block; ">
