@@ -1252,7 +1252,8 @@ div.pin:hover {
 .dialog-login .other {
 	padding-top: 15px;
 	float: right;
-	width: 220px;
+	width: 100%;
+    text-align:center;
 }
 
 .dialog-login .other strong {
@@ -1545,6 +1546,7 @@ div.pin:hover {
 }
 
 .dialog_upload .btn_select .listbtn {
+    margin-top:2px;
 	width: 247px;
 	color: black;
 	text-align: center;
@@ -1573,7 +1575,7 @@ div.pin:hover {
 .dialog_upload .btn_select>ul {
 	position: absolute;
 	z-index: 5;
-	top: 0;
+	top: 31px;
 	left: 0;
 	margin-top: -1px;
 	width: 300px;
@@ -2140,6 +2142,7 @@ a.steam_prev {
 
 .usercontrol .menu li:hover a i,.menu li.active a i {
 	background: url(../images/icons.png) no-repeat;
+	background-position: -24px 0px;
 }
 
 .usercontrol .menu li:hover {
@@ -2149,19 +2152,27 @@ a.steam_prev {
 .usercontrol .menu li.my a i {
 	background-position: 0px -135px;
 }
-
+.usercontrol .menu li.favs a i {
+	background-position: 0px -242px;
+}
 .usercontrol .menu li:hover.my a i,.menu li.my.active a i {
 	background-position: -24px -135px;
 }
-
+.usercontrol .menu li:hover.favs a i,.menu li.favs.active a i {
+	background-position: -24px -242px;
+}
 .usercontrol .menu li.alb a i {
 	background-position: 0px -47px;
 }
-
+.usercontrol .menu li.fava a i {
+	background-position: 0px -92px;
+}
 .usercontrol .menu li:hover.alb a i,.menu li.alb.active a i {
 	background-position: -24px -47px;
 }
-
+.usercontrol .menu li:hover.fava a i,.menu li.fava.active a i {
+	background-position: -24px -92px;
+}
 .usercontrol .menu li.timeline a i {
 	background-position: 0px -113px;
 }
@@ -2570,11 +2581,11 @@ img:hover.bbimage {
 }
 
 .form_item .btn_select>ul {
-	width: 250px;
+	width: 200px;
 }
 
 .form_item .btn_select .album_name {
-	width: 120px;
+	width: 109px;
 }
 
 .form_line input[type="text"] {

@@ -599,6 +599,7 @@ class share extends basecontroller {
 		$share_data['total_clicks'] = 0;
 		$share_data['album_id'] = $this->spArgs('album_id');
 		$share_data['category_id'] = $this->spArgs('category_id');
+		$share_data['category_tag'] = $this->spArgs('tg_id');
 
 		$data['share'] = $share_data;
 		$ptx_item = spClass('ptx_item');

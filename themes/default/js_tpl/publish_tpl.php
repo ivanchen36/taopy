@@ -61,7 +61,15 @@
 						<div class="form_item first_div">
 							<div class="btn_select first_div category_select_list" data-init="0" data-find-album="1">
 			                	<input id="category_select_id" name="category_id" type="hidden" class="category_select_id">
-								<a href="javascript:void(0);" class="listbtn" data-action="categoryItemPopup" data-params="category_select_div"><span class="label"><?php echo T('category');?>：</span><span class="category_select_title"><?php echo T('loading');?></span><s><b></b></s></a>
+								<a href="javascript:void(0);" class="listbtn" data-action="categoryItemPopup" data-params="category_select_div"><span class="label"><?php echo T('dis_cate');?>：</span><span class="category_select_title"><?php echo T('loading');?></span><s><b></b></s></a>
+			               		<ul>
+			                	</ul>
+			            	</div>
+						</div>
+                        <div class="form_item first_div">
+							<div class="btn_select first_div tg_select_list" data-init="0" data-find-tg="1">
+			                	<input id="tg_select_id" name="tg_id" type="hidden" class="tg_select_id">
+												<a href="javascript:void(0);" class="listbtn" data-action="tgItemPopup" data-params="category_select_div"><span class="label"><?php echo T('good_cate');?>：</span><span class="tg_select_title"><?php echo T('loading');?></span><s><b></b></s></a>
 			               		<ul>
 			                	</ul>
 			            	</div>
@@ -73,9 +81,19 @@
 			                	<ul>
 			                    	<li class="create_board" data-id="create_board">
 			                        	<input type="text" class="album_name" data-id="album_name">
-			                        	<button class="album_select_create" type="button" data-action="albumPopCreate" data-params="category_select_div"><?php echo T('create_new').T('album');?></button>
+			                        	<button class="album_select_create" type="button" data-action="albumPopCreate" data-params="category_select_div"><?php echo T('create_new');?></button>
 			                    	</li>
 			               		</ul>
+			            	</div>
+						</div>
+             <div class="form_item second_div">
+							<div class="btn_select second_div weibo_select_list">
+			                	<input id="weibo_id" name="weibo_id" type="hidden" value="1" class="weibo_id">
+								<a href="javascript:void(0);" class="listbtn" data-action="weiboPopup1" data-params="category_select_div"><span class="label">微博：</span><span class="weibo_title">仅淘便宜</span><s><b></b></s></a>
+			               		<ul>
+                                <li><a href="javascript:;">发布微博</a></li>
+                                <li><a href="javascript:;">仅淘便宜</a></li>
+			                	</ul>
 			            	</div>
 						</div>
 					</div>
@@ -91,11 +109,13 @@
 						<ul class="dropdown-menu smiles" data-init="0">
 				        </ul>
 				        </div>
+						<!--
 						<div class="btn-group" id="tags_div">
 							<a href="javascript:;" class="box dropdown-toggle" data-toggle="dropdown"><?php echo T('hot').' '.T('tag');?></a>
 							<ul class="dropdown-menu tags_list" data-target-id="publish_intro">
 				        	</ul>
 				        </div>
+				    -->
 						<a href="javascript:;" class="box" style="display:none;" onclick="javascript:$('#publish_intro').insertAtCaret('#话题#',1);">#话题#</a>
 						</div>
 						<textarea id="publish_intro" rows="2" name="intro"></textarea>

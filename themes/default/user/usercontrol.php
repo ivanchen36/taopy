@@ -35,20 +35,14 @@
   <div class="clear"></div>
   <div class="menu">
     <ul>
-      <li class="my <?php echo ($current_action=='shares'||$current_action=='favorite_share')?'active':'';?>"><a href="<?php echo spUrl("my","shares");?>"><i></i><?php echo T('my_pin');?></a>
-      	<ul class="menu_child">
-        	<li <?php echo ($current_action=='shares')?'class="active"':'';?>><a href="<?php echo spUrl("my","shares");?>"><?php echo T('my_share_pin');?></a></li>
-            <li <?php echo ($current_action=='favorite_share')?'class="active"':'';?>><a href="<?php echo spUrl("my","favorite_share");?>"><?php echo T('my_love_pin');?></a></li>
-       	</ul>
-      </li>
       <?php if($can_post):?>
-      <li class="share"><a href="javascript:void(0);" data-action="openPublishSelectDialog"><i></i><?php echo T('add_pin');?></a></li>
+      <li><a href="javascript:void(0);" data-action="openPublishSelectDialog"><i></i><?php echo T('add_pin');?></a></li>
       <?php endif;?>
-      <li class="alb <?php echo (stripos($current_action,'album')!== false)?'active':'';?>"><a href="<?php echo spUrl("my","album");?>"><i></i><?php echo T('album');?></a>
-      	<ul class="menu_child">
-        	<li <?php echo ($current_action=='album')?'class="active"':'';?>><a href="<?php echo spUrl("my","album");?>"><?php echo T('my_album');?></a></li>
-            <li <?php echo ($current_action=='favorite_album')?'class="active"':'';?>><a href="<?php echo spUrl("my","favorite_album");?>"><?php echo T('my_love_album');?></a></li>
-       	</ul>
+            <li class="my <?php echo ($current_action=='shares')?'active':'';?>"><a href="<?php echo spUrl("my","shares");?>"><i></i><?php echo T('my_share_pin');?></a></li>
+            <li class="favs <?php echo ($current_action=='favorite_share')?'active':'';?>"><a href="<?php echo spUrl("my","favorite_share");?>"><i></i><?php echo T('my_love_pin');?></a></li>
+      </li>
+            <li class="alb <?php echo ($current_action=='album')?'active':'';?>"><a href="<?php echo spUrl("my","album");?>"><i></i><?php echo T('my_album');?></a></li>
+            <li class="fava <?php echo ($current_action=='favorite_album')?'active':'';?>"><a href="<?php echo spUrl("my","favorite_album");?>"><i></i><?php echo T('my_love_album');?></a></li>
      </li>
     </ul>
   </div>
