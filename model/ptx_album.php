@@ -26,7 +26,7 @@ class ptx_album extends spModel
 	),
 	);
 
-	var $select_fields = " ptx_album.*,category.category_name_cn,user.email,user.nickname,user.user_title,user.total_likes ";
+	var $select_fields = " ptx_album.*,category.category_name_cn,user.email,user.nickname,user.user_title,user.total_likes,user.avatar_remote ";
 
 	private function init_conditions($conditions){
 		$conditions_album = NULL;

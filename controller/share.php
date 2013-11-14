@@ -463,6 +463,123 @@ class share extends basecontroller {
 		}
 	}
 
+    public function amazon_upload(){
+		$remote_url = $this->spArgs('u');
+        $uid = $this->spArgs('uid');
+
+        $channel_name = 'others';
+        $channel = spClass("Channel");
+        $data = $channel->fetch_remoteinfo($channel_name,$remote_url);
+        if(!$data){
+            $this->ajax_failed_response(T('fetch_failed'));
+            return;
+        }
+        if(!$this->current_user)
+        {
+            $this->current_user = $this->user_lib->ptx_user->getuser_byid($uid);
+        }
+        $sp = spClass('spArgs');
+		$sp->set('share_type', "collect");
+		$sp->set('channel', "amazon");
+		$sp->set('promotion_url', $remote_url);
+		$sp->set('reference_url', $remote_url);
+		$sp->set('old_price', $this->spArgs('price'));
+        $sp->set('title', str_replace("&nbsp;", " ", $this->spArgs('title')));
+        $sp->set('intro', str_replace("&nbsp;", " ", $this->spArgs('intro')));
+        $end = count($data['images']) -1;
+        for ($i = 2; $i <= $end; $i++)
+        {
+            if(strpos($data['images'][$i]['src'], "300_") != false) break;
+            if (i == $end)
+            {
+                $this->ajax_failed_response(T('fetch_failed'));
+
+                return;
+            }
+        }
+        $cover_url = $data['images'][$i]['src'];
+        $data['item_imgs'][0]['desc'] = "";
+        $data['item_imgs'][0]['cover'] = "1";
+        $data['item_imgs'][0]['url'] = $data['images'][$i]['src'];
+        $all_files_arr[0] = $data['item_imgs'][0]; 
+        
+		$date_dir = '/data/attachments/'.date("Y/m/d/");
+		(!is_dir(APP_PATH.$date_dir))&&@mkdir(APP_PATH.$date_dir,0777,true);
+		$file_name = $this->current_user['user_id'].'_'.time().rand(1,999);
+
+		$this->save_fetch_file($cover_url, $date_dir, $file_name, true);
+		$img_array = array();
+		foreach ($all_files_arr as $key=>$up_image){
+			if($up_image&&trim($up_image['url'])!=''){
+				if($up_image['cover']){
+					$img_array[] = array('id'=>$key,'url'=>$date_dir.$file_name,'desc'=>delete_html($up_image['desc']),'cover'=>$up_image['cover']);
+					continue;
+				}
+				$this->save_fetch_file($up_image['url'], $date_dir, $file_name.'_'.$key, false);
+				$img_array[] = array('id'=>$key,'url'=>$date_dir.$file_name.'_'.$key,'desc'=>delete_html($up_image['desc']),'cover'=>$up_image['cover']);
+			}
+		}
+		$this->create_share_item($date_dir.$file_name,array_length($img_array),$img_array);
+
+        $message = T('share_succeed');
+        $this->ajax_success_response(null, $message);
+
+        return;
+    }
+
+    public function tao_upload(){
+		$remote_url = $this->spArgs('u');
+        $uid = $this->spArgs('uid');
+
+        $channel_name = 'taobao';
+        $channel = spClass("Channel");
+        $data = $channel->fetch_remoteinfo($channel_name,$remote_url);
+        if(!$data){
+            $this->ajax_failed_response(T('fetch_failed'));
+            return;
+        }
+
+        if(!$this->current_user)
+        {
+            $this->current_user = $this->user_lib->ptx_user->getuser_byid($uid);
+        }
+        $sp = spClass('spArgs');
+		$sp->set('item_id', $data['item_id']);
+		$sp->set('intro', $data['name']);
+		$sp->set('title', $data['name']);
+		$sp->set('share_type', "collect");
+		$sp->set('channel', "tao");
+		$sp->set('promotion_url', $data['orgin_url'] . '&ali_trackid=2:mm_31808144_0_0:1383875137_6k2_586265597');
+		$sp->set('reference_url', $remote_url);
+		$sp->set('old_price', $data['price']);
+        $cover_url = $data['orgin_image_url'];
+        $data['item_imgs'][0]['desc'] = "";
+        $data['item_imgs'][0]['cover'] = "1";
+        $all_files_arr[0] = $data['item_imgs'][0]; 
+
+		$date_dir = '/data/attachments/'.date("Y/m/d/");
+		(!is_dir(APP_PATH.$date_dir))&&@mkdir(APP_PATH.$date_dir,0777,true);
+		$file_name = $this->current_user['user_id'].'_'.time().rand(1,999);
+
+		$this->save_fetch_file($cover_url, $date_dir, $file_name, true);
+		$img_array = array();
+		foreach ($all_files_arr as $key=>$up_image){
+			if($up_image&&trim($up_image['url'])!=''){
+				if($up_image['cover']){
+					$img_array[] = array('id'=>$key,'url'=>$date_dir.$file_name,'desc'=>delete_html($up_image['desc']),'cover'=>$up_image['cover']);
+					continue;
+				}
+				$this->save_fetch_file($up_image['url'], $date_dir, $file_name.'_'.$key, false);
+				$img_array[] = array('id'=>$key,'url'=>$date_dir.$file_name.'_'.$key,'desc'=>delete_html($up_image['desc']),'cover'=>$up_image['cover']);
+			}
+		}
+		$this->create_share_item($date_dir.$file_name,array_length($img_array),$img_array);
+
+        $message = T('share_succeed');
+        $this->ajax_success_response(null, $message);
+
+        return;
+    }
 
 	public function item_fetch(){
 		$this->ajax_check_login();
@@ -570,9 +687,8 @@ class share extends basecontroller {
 
 		$data['share_type'] = $this->spArgs('share_type','upload');
 		$data['price'] = $this->spArgs('price','0');
-		if(!is_numeric($data['price'])){
-			$data['price'] = 0;
-		}
+		$data['old_price'] = $this->spArgs('old_price','0');
+		
 		if($this->is_editer()){
 			$data['is_show'] = 1;
 		}else{
@@ -580,10 +696,14 @@ class share extends basecontroller {
 		}
 		$data['reference_url'] = $this->spArgs('reference_url','');
 		$data['reference_itemid'] = $this->spArgs('item_id','');
-		$data['reference_channel'] = $this->spArgs('channel');
-		$data['promotion_url'] = $this->spArgs('promotion_url');
-		$data['total_images'] = $image_num;
-		$data['images_array'] = serialize($img_array);
+        $data['reference_channel'] = $this->spArgs('channel');
+        $url = $this->spArgs('promotion_url');
+        $url = base64_encode($url);
+        $url = str_replace("=", "*", $url);
+        $url = strrev($url);
+        $data['promotion_url'] = "http://www.94ivan.com/go" . $url;
+        $data['total_images'] = $image_num;
+        $data['images_array'] = serialize($img_array);
 
 		$create_time = mktime();
 		$data['create_time'] = $create_time;
@@ -616,7 +736,7 @@ class share extends basecontroller {
 		$all_files = $this->spArgs('all_files');
 		$all_files_arr = unserialize(stripslashes($all_files));
 
-		$file_name = $this->current_user['user_id'].'_'.time().'';
+		$file_name = $this->current_user['user_id'].'_'.time().rand(1,999);
 		$date_dir = '/data/attachments/'.date("Y/m/d/");
 		(!is_dir(APP_PATH.$date_dir))&&@mkdir(APP_PATH.$date_dir,0777,true);
 
@@ -654,6 +774,6 @@ class share extends basecontroller {
 		file_exists($dest_file_path) && unlink($dest_file_path);
 		return true;
 	}
-
-
+    
+    
 }

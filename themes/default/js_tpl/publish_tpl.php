@@ -49,8 +49,9 @@
 					<input type="hidden" name="all_files" id="all_files">
 
 					<div class="form_line">
+						<input type="text" name="title" id="title" title="<?php echo T('share_title');?>">
 						<div class="form_item">
-							<input type="text" name="title" id="title" title="<?php echo T('share_title');?>">
+							<input type="text" name="old_price" id="old_price" title="<?php echo T('old_price');?>">
 						</div>
 						<div class="form_item">
 							<input type="text" name="price" id="price" title="<?php echo T('share_price');?>">

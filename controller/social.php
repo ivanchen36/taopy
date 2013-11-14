@@ -22,6 +22,10 @@ class social extends basecontroller {
 		$token = $connector->get_accesstoken($vendor);
 		$userinfo = $connector->get_userinfo($vendor);
 		$userinfo['vendor'] = $vendor;
+        if (!$userinfo['uid']) 
+        {
+            $this->error(T('your_social_info_invalid'),spUrl('pin','index'));
+        }
 		$this->session->set_data('social_info',$userinfo);
 		$this->social_info = $userinfo;
 		$this->bind();
@@ -35,7 +39,8 @@ class social extends basecontroller {
 		$ptx_connector = spClass("ptx_connector");
 		$ptx_user = spClass("ptx_user");
 		$vendor = $this->spArgs("vendor");
-		if(!$vendor){
+        if(!$vendor)
+        {
 			$this->error(T('not_support_vendor_redirect'));
 		}
 		$ptx_connector->del_connector_by_vendor_uid($vendor,$this->current_user['user_id']);

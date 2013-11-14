@@ -1,5 +1,8 @@
 @charset "UTF-8";
 /*add this for backgrount setting */
+span.red {
+      color: #BB0200;
+}
 .container {
 	width: 100%;
 	margin: 0 auto;
@@ -899,7 +902,6 @@ div.pin:hover {
 	line-height: 23px;
 	text-align: center;
 }
-
 .share_img .goods_price {
 	height: 18px;
 	line-height: 18px;
@@ -907,6 +909,16 @@ div.pin:hover {
 	position: absolute;
 	bottom: 2px;
 	right: 12px;
+	opacity: 0.9;
+	filter:alpha(opacity=90);
+}
+.share_img .old_price {
+	height: 18px;
+	line-height: 18px;
+	padding: 0 5px;
+	position: absolute;
+	bottom: 2px;
+	left: 12px;
 	opacity: 0.9;
 	filter:alpha(opacity=90);
 }
@@ -1628,8 +1640,8 @@ div.pin:hover {
 	background-color: #E8E8E8;
 }
 /*detail page css*/
-.share_header h2 {
-	font: 700 28px/40px '宋体', 'microsoft yahei', '黑体', '华文宋体', arial;
+.share_header h5 {
+	font: '宋体', 'microsoft yahei', '黑体', '华文宋体', arial;
 	padding: 8px 0;
 	margin-bottom: 0px;
 }

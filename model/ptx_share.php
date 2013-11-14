@@ -42,7 +42,7 @@ class ptx_share extends spModel
 			'enabled' => false     
 	)
 	);
-	var $select_fields = " ptx_share.*,user.user_title,user.bio,user.avatar_remote,detail.item_id,detail.is_show,detail.img_pro,detail.images_array,detail.title,detail.intro,detail.keywords,detail.image_path,detail.share_attribute,detail.share_type,detail.price,detail.reference_url,detail.promotion_url,detail.total_images,category.category_name_cn,album.album_title ";
+	var $select_fields = " ptx_share.*,user.user_title,user.bio,user.avatar_remote,detail.item_id,detail.is_show,detail.img_pro,detail.images_array,detail.title,detail.intro,detail.keywords,detail.image_path,detail.share_attribute,detail.share_type,detail.price,detail.old_price,detail.reference_url,detail.promotion_url,detail.total_images,category.category_name_cn,album.album_title ";
 
 	private function init_conditions($conditions){
 		$conditions_item = ' detail.is_deleted=0 ';
@@ -196,6 +196,7 @@ class ptx_share extends spModel
 				LEFT JOIN  `{$dbpre}ptx_item` t3 ON t1.item_id = t3.item_id
 				LEFT JOIN  `{$dbpre}ptx_category` t4 ON t1.category_id = t4.category_id
 				LEFT JOIN  `{$dbpre}ptx_album` t5 ON t1.album_id = t5.album_id
+                LEFT JOIN  `{$dbpre}ptx_user` t6 ON t1.user_id = t6.user_id
 				WHERE {$where}";
 
 		($limit) ? $sql.= " LIMIT {$limit}" : '';

@@ -103,9 +103,10 @@ span.apply-btn input {background: none;color: #ffffff;}
 .dialog_upload .image i.cover {color:#FFF;background-color: #feab34;font-style: normal;font-weight: bold;}
 /*详细页配色*/
 .share_img .goods_price {background: #ff6666;color:#fff;}
+.share_img .old_price {background: #ff6666;color:#fff;}
 .share_detail .share_txt p{color: #333;font-size: 14px;}
 .share_detail .comments {background: #F7F7F7;}
-.share_header h2{border-bottom: #E1E1E1 solid 1px;}
+.share_header h5{border-bottom: #E1E1E1 solid 1px;}
 .share_detail .comments b.arrow {border-bottom-color: #F7F7F7;}
 .share_detail .comments .reply_box .pl_area{border: 1px solid #DDD;color: #666;}
 /*评论配色*/

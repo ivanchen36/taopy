@@ -3,7 +3,7 @@
 <div class="main">
     <div class="g960 mt20 white_bg">
     	<div class="g960 inside text_c share_header">
-             <h2><?php echo sysSubStr($share['title'],60);?></h2>
+             <h5><?php echo $share['title'];?></h5>
     	</div>
     	
     	<div class="g960 inside mt20 mb20">
@@ -26,7 +26,7 @@
                 
     			<div class="share_txt <?php echo $share['price']?'share_txt_with_price':''; ?>">
                     <p class="share_desc"><?php echo $share_intro;?></p>
-                    <a class="buy_link" href="<?php echo $share['reference_url'];?>" target="_blank"></a>
+                    <a class="buy_link" href="<?php echo $share['promotion_url'];?>" target="_blank"></a>
                 </div> 
     			
     			<div class="share_tools mt20">
@@ -118,9 +118,9 @@
 	            
 	            <?php if($share['price']):?>
 	            <div class="side_container side_bd mt10">
-		            <div><h6><?php echo T('buy_here');?></h6></div>
+                <div><h6><?php echo T('buy_here');?> 原价<?php echo T('money_unit');?><?php echo number_format($share['old_price'],2);?></h6></div>
 		            <div class="side_content">
-		            <p><strong><?php echo sysSubStr($share['title'],25,true);?></strong> <?php echo T('money_unit');?><em><?php echo number_format($share['price'],2);?></em>  <a href="<?php echo $share['reference_url'];?>" target="_blank"><?php echo T('go_purchase');?></a></p>
+		            <p><strong><?php echo sysSubStr($share['title'],25,true);?></strong> <?php echo T('money_unit');?><em><?php echo number_format($share['price'],2);?></em>  <a href="<?php echo $share['promotion_url'];?>" target="_blank"><?php echo T('go_purchase');?></a></p>
 		            </div>
 	            </div>
 	            <?php endif;?>
@@ -186,8 +186,8 @@
 			            <ul class="other">
 			       			<li>
 			       			<?php foreach ($favorite_list as $favorite):?>
-			                	<a href="<?php echo spUrl('pub','index',array('uid'=>$favorite['uid']));?>" title="<?php echo $favorite['nickname']?>">
-			                    <img height="50" width="50" src="<?php echo $favorite['avatar']?>" onerror="javascript:this.src = base_url + '/assets/img/avatar_middle.jpg';"/></a>
+			                	<a href="<?php echo spUrl('pub','index',array('uid'=>$favorite['user_id']));?>" title="<?php echo $favorite['nickname']?>">
+			                    <img height="50" width="50" src="<?php echo $favorite['avatar_remote']?>" onerror="javascript:this.src = base_url + '/assets/img/avatar_middle.jpg';"/></a>
 			       			<?php endforeach;?>
 			        		</li>
 			    		</ul>

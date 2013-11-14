@@ -46,6 +46,15 @@ class basecontroller extends spController
 		exit();
 	}
 
+    public function go404()
+    {
+        header("HTTP/1.1 404 Not Found");
+        header("Status: 404 Not Found");
+        import(APP_PATH.'/themes/default/errorpage/404.html'); 
+        exit;
+    }
+
+
 	public function fetch_global(){
 		GLOBAL $__controller, $__action;
 		$this->current_controller = $__controller;
@@ -110,10 +119,6 @@ class basecontroller extends spController
 		$cat_id =  $this->spArgs("cat");
 		if($cat_id&&is_numeric($cat_id)){
 			$this->category_id = $cat_id;
-		}
-		$category_id =  $this->spArgs("category_id");
-		if($category_id&&is_numeric($category_id)){
-			$this->category_id = $category_id;
 		}
 		$cid =  $this->spArgs("cid");
 		if($cid&&is_numeric($cid)){

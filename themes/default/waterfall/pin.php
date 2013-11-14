@@ -18,7 +18,7 @@
 		 	</div>
 			<div class="share_img">
 				<?php $img_pro = str_to_arr($share['img_pro'], ',');$height=(200/$img_pro['width'])*$img_pro['height'];?>
-				<a target="_blank" href="<?php echo host_url(spUrl("detail","index", array("share_id"=> $share['share_id'])));?>" class="image <?php echo $height>800?'long':'';?>" id="<?php echo $share['share_id']?>_image"><img class="s_image" src="<?php echo base_url($share['image_path'].'_middle.jpg?'.$hash); ?>" orgin_src="<?php echo base_url($share['image_path'].'_large.jpg');?>" width="200" height="<?php echo $height;?>" border="0"/><?php echo $height>800?'<span class="stop"></span>':'';?></a><?php if($share['price']):?><div class="goods_price"><?php echo T('money_unit').number_format($share['price'],2);?></div><?php endif;?>
+                <a target="_blank" href="<?php echo host_url(spUrl("detail","index", array("share_id"=> $share['share_id'])));?>" class="image <?php echo $height>800?'long':'';?>" id="<?php echo $share['share_id']?>_image"><img class="s_image" src="<?php echo base_url($share['image_path'].'_middle.jpg?'.$hash); ?>" orgin_src="<?php echo base_url($share['image_path'].'_large.jpg');?>" width="200" height="<?php echo $height;?>" border="0"/><?php echo $height>800?'<span class="stop"></span>':'';?></a><?php if($share['price']):?><?php if($share['price'] != $share['old_price']):?><div class="old_price"><s><?php echo T('money_unit').number_format($share['old_price'],2);?></s></div><?php endif;?><div class="goods_price"><?php echo T('money_unit').number_format($share['price'],2);?></div><?php endif;?>
 			</div>
 			<div class="share_desc"><?php echo parse_message(sysSubStr($share['intro'],200,true));?></div>
 			<div class="share_info">

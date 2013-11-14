@@ -25,6 +25,10 @@ class pin extends basecontroller
 		if($this->page == 1&&$this->category_id){
 			$ptx_tag = spClass('ptx_tag');
 			$this->tag_group = $ptx_tag->get_tag_group(" ptx_tag.category_id = '".$this->category_id."'");
+            $ptx_category = spClass("ptx_category");
+            $category = $ptx_category->find_category_byid($this->category_id);
+            $this->seo_title($category['category_name_cn']);
+            $this->seo_keyword(sysSubStr(str_replace(',', ' ', $category['category_hot_words']),100));
 		}
 
 		$args = array("page"=>"2","wf"=>"1");
@@ -38,10 +42,6 @@ class pin extends basecontroller
                 $conditions['category_id'] = $this->category_id;
             }
             $args['cat']=$this->category_id;
-            $ptx_category = spClass("ptx_category");
-            $category = $ptx_category->find_category_byid($this->category_id);
-            $this->seo_title($category['category_name_cn']);
-            $this->seo_keyword(sysSubStr(str_replace(',', ' ', $category['category_hot_words']),100));
         }
         if($tag){
 			$tag = safeEncoding($tag);
@@ -64,7 +64,6 @@ class pin extends basecontroller
 		$shares = $this->add_ads($shares);
 		$this->waterfallView($shares,'pin');
 		$need_header_footer = ($wf=='1')?false:true;
-        //spClass('spLog')->debug($category['category_name_cn']);
 		$this->ouput("/pin/index.php",$need_header_footer);
 	}
 

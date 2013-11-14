@@ -24,7 +24,7 @@
 						src="<?php echo base_url().$share['image_path'].'_square.jpg'?>"
 						width="50" height="50" onerror="this.src='<?php echo base_url().'assets/img/blank.png'?>';" />
 					</a>
-						<p><strong><a href="<?php echo spUrl('pub','index',array('uid'=>$share['poster_id']));?>"><?php echo $share['poster_nickname']?></a>:</strong><?php echo $share['intro']?></p><span class="sendtime"><?php echo friendlyDate($share['create_time']);?></span>
+						<p><strong><a href="<?php echo spUrl('pub','index',array('uid'=>$share['poster_id']));?>"><?php echo $share['poster_nickname']?></a>:</strong><?php echo $share['title']?></p><span class="sendtime"><?php echo friendlyDate($share['create_time']);?></span>
 					</li>
 					<?php endforeach;?>
 
