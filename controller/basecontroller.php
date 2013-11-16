@@ -5,8 +5,11 @@
  */
 class basecontroller extends spController
 {
+    public $log;
+
 	public function __construct() {
 		parent::__construct();
+        $this->log = spClass('spLog');
 		$this->session = spClass('Session');
 		$this->cookie = spClass('Cookie');
 		$this->user_lib = spClass('UserLib');

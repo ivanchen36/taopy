@@ -40,6 +40,10 @@ var qq_key = '<?php echo $settings['api_setting']['QQ']['APPKEY']?$settings['api
 <!--[if lte IE 6]>
 	<script src="<?php echo base_url();?>assets/js/letskillie6.zh_CN.pack.js"></script>
 <![endif]-->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F041acadb91b28866a1e08b7caad57506' type='text/javascript'%3E%3C/script%3E"));
+</script>
 <script>
 <?php if(!$current_user['user_id']&&in_array($current_controller,array('welcome','pin'))&&$settings['ui_layout']['login_reminder']):?>
 $(document).ready(function() {
