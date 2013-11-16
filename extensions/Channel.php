@@ -129,7 +129,7 @@ class Channel {
 				}
 				$item_id = $channel_instance->get_item_id($url);
 				$good_info = $channel_instance->fetch_goodinfo($item_id);
-				$promotion = $channel_instance->get_promotion_url($item_id);
+				//$promotion = $channel_instance->get_promotion_url($item_id);
 				if(isset($good_info['orgin_img_url'])){
 					//$image_data = $this->save_remote_image($good_info['orgin_img_url']);
 					$data = array();
@@ -146,11 +146,11 @@ class Channel {
 					/*$data['orgin_image'] = $image_data['orgin'];
 					 $data['middle_image'] = $image_data['middle'];
 					 $data['small_image'] = $image_data['small'];*/
-					if($promotion){
-						$data['promotion_url'] = $promotion['click_url'];
-					}else{
+					//if($promotion){
+						//$data['promotion_url'] = $promotion['click_url'];
+					//}else{
 						$data['promotion_url'] = $good_info['orgin_url'];
-					}
+					//}
 					return $data;
 				}
 			}else{
