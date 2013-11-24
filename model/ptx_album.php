@@ -108,7 +108,7 @@ class ptx_album extends spModel
 		$conditions['album_id'] = $album_id;
 		$shares = $ptx_share->search_no_page($conditions,' ptx_share.share_id,detail.image_path ',null,9);
 		$data['total_share'] = $ptx_share->findCount($conditions);
-		$data['album_cover'] = arr_list_to_str($shares);
+		$data['album_cover'] = str_replace("http://", "", arr_list_to_str($shares));
 		return $this->update($conditions,$data);
 	}
 

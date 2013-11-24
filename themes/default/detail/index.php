@@ -15,7 +15,7 @@
     			<div class="share_pic" id="share_detail_image" href="<?php echo host_url(spUrl("detail","index", array("share_id"=> $share['share_id'])));?>">
                 	<?php $images = unserialize($share['images_array']);?>
                 	<?php foreach ($images as $image):?>
-                		<img src="<?php echo base_url($image['url'].'_large.jpg?'.$hash);?>" orgin_src="<?php echo base_url($image['url'].'_large.jpg');?>">
+                		<img src="<?php echo $image['url'];?>" orgin_src="<?php echo $image['url'];?>">
                 		<?php if($image['desc']):?>
                 		<div class="share-pic-desc">
 							<p><i class="sup-ico"></i><?php echo $image['desc'];?><i class="sub-ico"></i></p>
@@ -146,7 +146,7 @@
 							<ul class="image_list">
 								<?php $covers = str_to_arr_list($album['album_cover']);$num=0;?>
 					        	<?php foreach ($covers as $c):?>
-					        	<li><a href="<?php echo spUrl("detail","index", array("share_id"=> $c['share_id']));?>" class="trans07"><img src="<?php echo base_url($c['image_path'].'_square.jpg');?>" /></a></li>
+					        	<li><a href="<?php echo spUrl("detail","index", array("share_id"=> $c['share_id']));?>" class="trans07"><img class="w62" src="http://<?php echo $c['image_path'];?>"/></a></li>
 					        	<?php $num++;?>
 					        	<?php endforeach;?>
 					        	<?php for ($i=$num;$i<9;$i++):?>
@@ -168,7 +168,7 @@
 		            	<div class="album g225" style="height: 200px;">
 							<ul class="image_list">
 					        	<?php $num=0; foreach ($shares_same_user as $c):?>
-					        	<li><a href="<?php echo spUrl("detail","index", array("share_id"=> $c['share_id']));?>" class="trans07"><img src="<?php echo base_url($c['image_path'].'_square.jpg');?>" title="<?php echo $c['title'];?>"/></a></li>
+					        	<li><a href="<?php echo spUrl("detail","index", array("share_id"=> $c['share_id']));?>" class="trans07"><img class="w62" src="<?php echo $c['image_path'];?>" title="<?php echo $c['title'];?>"/></a></li>
 					        	<?php $num++;?>
 					        	<?php endforeach;?>
 					        	<?php for ($i=$num;$i<9;$i++):?>
@@ -203,7 +203,7 @@
 	                        <?php foreach($view_history as $item): ?>
 	                        <li>
 	                            <div class="pic_wrap">
-	                                <a href="<?php echo spUrl('detail','index', array('share_id'=>$item['s']));?>" class="trans07" title="<?php echo sysSubStr($item['t'],40,true);?>"><img src="<?php echo base_url($item['p'].'_square_like.jpg');?>"></a>
+	                                <a href="<?php echo spUrl('detail','index', array('share_id'=>$item['s']));?>" class="trans07" title="<?php echo sysSubStr($item['t'],40,true);?>"><img src="http://<?php echo $item['p'];?>"></a>
 	                            </div>
 	
 	                        </li>

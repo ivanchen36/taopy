@@ -9,7 +9,7 @@
     </div>
     <div class="mark_list">
     {{#shares}}
-    <a href="{{link}}" target="_blank"><img src="<?php echo base_url();?>{{image_path}}_square.jpg" title="{{title}}" /></a>
+    <a href="{{link}}" target="_blank"><img src="{{image_path}}" title="{{title}}" /></a>
     {{/shares}}
     </div>
 	{{/data}}

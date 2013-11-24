@@ -3,6 +3,14 @@
 span.red {
       color: #BB0200;
 }
+.w62 {
+    width: 62px;
+    height: 62px;
+}
+.w100 {
+    width: 100px;
+    height: 100px;
+}
 .container {
 	width: 100%;
 	margin: 0 auto;

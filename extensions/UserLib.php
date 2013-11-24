@@ -32,17 +32,16 @@ class UserLib {
 	}
 
 	private function init_auth($user){
-		$avatar_info = $this->get_avatarinfo($user['user_id']);
 		return array(
 								'user_id'=>$user['user_id'],
+								'social_userid'=>$user['social_userid'],
 								'nickname'=>$user['nickname'],
 								'email'=>$user['email'],
+								'gender'=>$user['gender'],
 								'avatar_remote'=>$user['avatar_remote'],
-								'password'=>$user['password'],
-								'uc_id'=>$user['uc_id'],
-								'is_star'=>$user['is_star'],
-								'is_social'=>$user['is_social'],
-								'is_shop'=>$user['is_shop'],
+								'access_token'=>$user['access_token'],
+								'homepage'=>$user['homepage'],
+								'bio'=>$user['bio'],
 								'user_type'=>$user['user_type']
 		);
 		

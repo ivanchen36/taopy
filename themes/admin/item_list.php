@@ -38,7 +38,7 @@
         <?php foreach ($items as $item):?>
           <tr>
             <td><?php echo $item['item_id'];?></td>
-            <td><img src="<?php echo base_url().$item['image_path'].'_square.jpg';?>" width="50"/></td>
+            <td><img src="<?php echo $item['image_path'];?>" width="50"/></td>
             <td style="word-wrap:break-word;width: 50px;"><?php echo $item['user_nickname'];?></td>
             <td style="word-wrap:break-word;width: 200px;"><?php echo $item['intro'];?></td>
             <td><?php echo $item['category_name_cn'];?></td>

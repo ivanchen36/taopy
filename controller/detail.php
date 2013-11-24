@@ -119,7 +119,7 @@ class detail extends basecontroller
 	function add_view_history($share){
 		$history = $this->get_view_history();
 		$value['s'] =  $share['share_id'];
-		$value['p'] = $share['image_path'];
+		$value['p'] = str_replace("http://", "", $share['image_path']);
 		$value['t'] = sysSubStr($share['title'],40,true);
 		$value['m'] = $share['total_comments'];
 		$value['k'] = $share['total_likes'];

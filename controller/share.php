@@ -5,16 +5,25 @@
  */
 class share extends basecontroller {
 
+    private $cate;
+
 	public function __construct() {
 		parent::__construct();
+        $this->cate = $GLOBALS['G_SP']["category"];
 	}
+
+    public function upload_weibo($content, $url, $token)
+    {
+        $weibo = spClass('Weibo', array($token));
+        return $weibo->upload_weibo($content, $url);
+    }
 
 	public function index()
 	{
 		$this->ouput("/share/index.php");
 	}
 
-	public function buy(){
+    public function buy(){
 		$item_id = $this->spArgs("mid");
 		if($item_id&&is_numeric($item_id)){
 			$ptx_item = spClass('ptx_item');
@@ -405,7 +414,7 @@ class share extends basecontroller {
 			$this->ajax_failed_response(T('comment_failed'));
 			return ;
 		}
-	}
+	} 
 
 	public function del_comment(){
 		$this->ajax_check_editer();
@@ -474,10 +483,7 @@ class share extends basecontroller {
             $this->ajax_failed_response(T('fetch_failed'));
             return;
         }
-        if(!$this->current_user)
-        {
-            $this->current_user = $this->user_lib->ptx_user->getuser_byid($uid);
-        }
+        $this->current_user = $this->user_lib->ptx_user->getuser_byid($uid);
         $sp = spClass('spArgs');
 		$sp->set('share_type', "collect");
 		$sp->set('channel', "amazon");
@@ -502,24 +508,14 @@ class share extends basecontroller {
         $data['item_imgs'][0]['cover'] = "1";
         $data['item_imgs'][0]['url'] = $data['images'][$i]['src'];
         $all_files_arr[0] = $data['item_imgs'][0]; 
+        $all_files_arr[0]['id'] = 0;
         
 		$date_dir = '/data/attachments/'.date("Y/m/d/");
 		(!is_dir(APP_PATH.$date_dir))&&@mkdir(APP_PATH.$date_dir,0777,true);
 		$file_name = $this->current_user['user_id'].'_'.time().rand(1,999);
 
 		$this->save_fetch_file($cover_url, $date_dir, $file_name, true);
-		$img_array = array();
-		foreach ($all_files_arr as $key=>$up_image){
-			if($up_image&&trim($up_image['url'])!=''){
-				if($up_image['cover']){
-					$img_array[] = array('id'=>$key,'url'=>$date_dir.$file_name,'desc'=>delete_html($up_image['desc']),'cover'=>$up_image['cover']);
-					continue;
-				}
-				$this->save_fetch_file($up_image['url'], $date_dir, $file_name.'_'.$key, false);
-				$img_array[] = array('id'=>$key,'url'=>$date_dir.$file_name.'_'.$key,'desc'=>delete_html($up_image['desc']),'cover'=>$up_image['cover']);
-			}
-		}
-		$this->create_share_item($date_dir.$file_name,array_length($img_array),$img_array);
+		$this->create_share_item($date_dir.$file_name,array_length($all_files_arr),$all_files_arr, $this->current_user['access_token']);
 
         $message = T('share_succeed');
         $this->ajax_success_response(null, $message);
@@ -539,10 +535,7 @@ class share extends basecontroller {
             return;
         }
 
-        if(!$this->current_user)
-        {
-            $this->current_user = $this->user_lib->ptx_user->getuser_byid($uid);
-        }
+        $this->current_user = $this->user_lib->ptx_user->getuser_byid($uid);
         $sp = spClass('spArgs');
 		$sp->set('item_id', $data['item_id']);
 		$sp->set('intro', $data['name']);
@@ -556,24 +549,15 @@ class share extends basecontroller {
         $data['item_imgs'][0]['desc'] = "";
         $data['item_imgs'][0]['cover'] = "1";
         $all_files_arr[0] = $data['item_imgs'][0]; 
+        $all_files_arr[0]['id'] = 0;
 
 		$date_dir = '/data/attachments/'.date("Y/m/d/");
 		(!is_dir(APP_PATH.$date_dir))&&@mkdir(APP_PATH.$date_dir,0777,true);
-		$file_name = $this->current_user['user_id'].'_'.time().rand(1,999);
+		$file_name = $this->current_user['user_id'].'_'.time();
 
 		$this->save_fetch_file($cover_url, $date_dir, $file_name, true);
-		$img_array = array();
-		foreach ($all_files_arr as $key=>$up_image){
-			if($up_image&&trim($up_image['url'])!=''){
-				if($up_image['cover']){
-					$img_array[] = array('id'=>$key,'url'=>$date_dir.$file_name,'desc'=>delete_html($up_image['desc']),'cover'=>$up_image['cover']);
-					continue;
-				}
-				$this->save_fetch_file($up_image['url'], $date_dir, $file_name.'_'.$key, false);
-				$img_array[] = array('id'=>$key,'url'=>$date_dir.$file_name.'_'.$key,'desc'=>delete_html($up_image['desc']),'cover'=>$up_image['cover']);
-			}
-		}
-		$this->create_share_item($date_dir.$file_name,array_length($img_array),$img_array);
+
+		$this->create_share_item($date_dir.$file_name,array_length($all_files_arr),$all_files_arr, $this->current_user['access_token']);
 
         $message = T('share_succeed');
         $this->ajax_success_response(null, $message);
@@ -620,28 +604,30 @@ class share extends basecontroller {
 
 	}
 
-	private function save_share_fetch(){
+	private function save_share_fetch($token){
 		$cover_url = $this->spArgs('cover_filename');
 		$all_files = $this->spArgs('all_files');
-		$all_files_arr = unserialize(stripslashes($all_files));
+        $weibo = $this->spArgs('weibo');
+        if ($weibo == 1)
+        {
+            $token = $this->current_user['access_token'];
+        }else
+        {
+            $ptx_user = spClass("ptx_user");
+            $user = $ptx_user->getuser_byid("11");
+            $token = $user['access_token'];
+        }
+
+        $arr = unserialize(stripslashes($all_files));
+		$all_files_arr[0] =  $arr[0];
+        $all_files_arr[0]['id'] = 0;
 
 		$date_dir = '/data/attachments/'.date("Y/m/d/");
 		(!is_dir(APP_PATH.$date_dir))&&@mkdir(APP_PATH.$date_dir,0777,true);
 		$file_name = $this->current_user['user_id'].'_'.time().'';
 
 		$this->save_fetch_file($cover_url, $date_dir, $file_name, true);
-		$img_array = array();
-		foreach ($all_files_arr as $key=>$up_image){
-			if($up_image&&trim($up_image['url'])!=''){
-				if($up_image['cover']){
-					$img_array[] = array('id'=>$key,'url'=>$date_dir.$file_name,'desc'=>delete_html($up_image['desc']),'cover'=>$up_image['cover']);
-					continue;
-				}
-				$this->save_fetch_file($up_image['url'], $date_dir, $file_name.'_'.$key, false);
-				$img_array[] = array('id'=>$key,'url'=>$date_dir.$file_name.'_'.$key,'desc'=>delete_html($up_image['desc']),'cover'=>$up_image['cover']);
-			}
-		}
-		$this->create_share_item($date_dir.$file_name,array_length($img_array),$img_array);
+		$this->create_share_item($date_dir.$file_name,array_length($all_files_arr),$all_files_arr, $token);
 		return true;
 	}
 
@@ -652,11 +638,8 @@ class share extends basecontroller {
 		if(!empty($content) && @file_put_contents($file_path,$content) > 0)
 		{
 			$imagelib = spClass('ImageLib');
-			$imagelib->create_thumb($file_path, 'large', 600);
-			$imagelib->crop_square($file_path, 100,'square_like');
 			if($is_cover){
 				$imagelib->create_thumb($file_path, 'middle', 200);
-				$imagelib->create_thumb($file_path, 'small', 150);
 				$imagelib->crop_square($file_path, 62);
 			}
 			file_exists($file_path) && unlink($file_path);
@@ -665,16 +648,23 @@ class share extends basecontroller {
 	}
 
 
-	private function create_share_item($image_path,$image_num,$img_array){
+	private function create_share_item($image_path,$image_num,$img_array, $token, $upload=false){
 		$local_user = $this->current_user;
 		$segment = spClass('Segment');
-		$img_pro = @getimagesize(APP_PATH.$image_path.'_middle.jpg');
+        $pic = APP_PATH.$image_path.'_middle.jpg';
+		$img_pro = @getimagesize($pic);
+		unlink($pic);
+        $tmp = $img_array[0]['url'];
+        if ($upload)
+        {
+            $img_array[0]['url'] = "http://www.94ivan.com/data/attachments/tmp/" . $tmp;
+        }
 		$img['width']=$img_pro['0'];
 		$img['height']=$img_pro['1'];
 		$data['img_pro'] = array_to_str($img, ',');
 		$data['title'] = $this->spArgs('title');
 		$data['category_id'] = $this->spArgs('category_id');
-		$data['image_path'] = $image_path;
+		$data['image_path'] = $img_array[0]['url'];
 		$data['user_id'] = $local_user['user_id'];
 		$data['intro'] = $this->spArgs('intro');
 		$segment_str = $segment->segment($data['intro']);
@@ -724,35 +714,58 @@ class share extends basecontroller {
 		$data['share'] = $share_data;
 		$ptx_item = spClass('ptx_item');
 		$ptx_item->linker['share']['enabled'] = true;
-		$ptx_item->spLinker()->create($data);
+		$item_id = $ptx_item->spLinker()->create($data);
+        $share_id = $item_id - 26;
+        $content = "【" . $this->cate[$data['category_id']] . "】" . $data['title']. " 原价：￥" . $data['old_price']
+            . " 现价：￥" . $data['price'] . " 传送门：http://www.94ivan.com/detail-index-share_id-" . $share_id . ".html";
+        $rs = $this->upload_weibo($content, $data['image_path'], $token);
 
-		$ptx_album = spClass('ptx_album');
-		return $ptx_album->update_album_cover($share_data['album_id']);
-	}
+        $img_array[0]['url'] = $rs['original_pic'];
+        $item_condition['item_id'] = $item_id;
+		$update_item['image_path'] = $img_array[0]['url'];
+        $update_item['images_array'] = serialize($img_array);
+        $ptx_item->update($item_condition,$update_item);
 
-	private function save_share_upload(){
+		$ptx_share = spClass('ptx_share');
+        $share_condition['share_id'] = $share_id;
+		$update_share['original_id'] = $rs['id'];
+        $ptx_share->update($share_condition,$update_share);
 
-		$cover_url = $this->spArgs('cover_filename');
-		$all_files = $this->spArgs('all_files');
-		$all_files_arr = unserialize(stripslashes($all_files));
+        if ($upload)
+        {
+            $tmp = APP_PATH.'/data/attachments/tmp/' . $tmp;
+    		file_exists($tmp) && unlink($tmp);
+        }
+
+        $ptx_album = spClass('ptx_album');
+        return $ptx_album->update_album_cover($share_data['album_id']);
+    }
+
+    private function save_share_upload($token){
+
+        $cover_url = $this->spArgs('cover_filename');
+        $all_files = $this->spArgs('all_files');
+        $weibo = $this->spArgs('weibo');
+        if ($weibo == 1)
+        {
+            $token = $this->current_user['access_token'];
+        }else
+        {
+            $ptx_user = spClass("ptx_user");
+            $user = $ptx_user->getuser_byid("11");
+            $token = $user['access_token'];
+        }
+        $arr = unserialize(stripslashes($all_files));
+        $all_files_arr[0] =  $arr[0];
+        $all_files_arr[0]['id'] = 0;
 
 		$file_name = $this->current_user['user_id'].'_'.time().rand(1,999);
 		$date_dir = '/data/attachments/'.date("Y/m/d/");
 		(!is_dir(APP_PATH.$date_dir))&&@mkdir(APP_PATH.$date_dir,0777,true);
 
 		$this->save_upload_file($cover_url, $date_dir, $file_name, true);
-		$img_array = array();
-		foreach ($all_files_arr as $key=>$up_image){
-			if($up_image&&trim($up_image['url'])!=''){
-				if($up_image['cover']){
-					$img_array[] = array('id'=>$key,'url'=>$date_dir.$file_name,'desc'=>delete_html($up_image['desc']),'cover'=>$up_image['cover']);
-					continue;
-				}
-				$this->save_upload_file($up_image['url'], $date_dir, $file_name.'_'.$key, false);
-				$img_array[] = array('id'=>$key,'url'=>$date_dir.$file_name.'_'.$key,'desc'=>delete_html($up_image['desc']),'cover'=>$up_image['cover']);
-			}
-		}
-		return $this->create_share_item($date_dir.$file_name,array_length($img_array),$img_array);
+		
+		return $this->create_share_item($date_dir.$file_name,array_length($all_files_arr),$all_files_arr, $token, true);
 	}
 
 	private function save_upload_file($url,$date_dir,$file_name,$is_cover=false){
@@ -761,14 +774,10 @@ class share extends basecontroller {
 		$source = $temp_dir.$url;
 		$dest_file_path = APP_PATH.$date_dir.$file_name.'.jpg';
 		@copy($source, $dest_file_path);
-		file_exists($source) && unlink($source);
 
 		$imagelib = spClass('ImageLib');
-		$imagelib->create_thumb($dest_file_path, 'large', 600);
-		$imagelib->crop_square($dest_file_path, 100,'square_like');
 		if($is_cover){
 			$imagelib->create_thumb($dest_file_path, 'middle', 200);
-			$imagelib->create_thumb($dest_file_path, 'small', 150);
 			$imagelib->crop_square($dest_file_path, 62);
 		}
 		file_exists($dest_file_path) && unlink($dest_file_path);

@@ -21,7 +21,7 @@
 					<li style="display: list-item;">
 					<a href="<?php echo spUrl("detail","index", array("share_id"=> $share['share_id']));?>">
 					<img
-						src="<?php echo base_url().$share['image_path'].'_square.jpg'?>"
+						src="<?php echo $share['image_path'];?>"
 						width="50" height="50" onerror="this.src='<?php echo base_url().'assets/img/blank.png'?>';" />
 					</a>
 						<p><strong><a href="<?php echo spUrl('pub','index',array('uid'=>$share['poster_id']));?>"><?php echo $share['poster_nickname']?></a>:</strong><?php echo $share['title']?></p><span class="sendtime"><?php echo friendlyDate($share['create_time']);?></span>
@@ -53,7 +53,7 @@
 				<ul class="image_list">
 					<?php $covers = str_to_arr_list($album['album_cover']);$num=0;?>
 		        	<?php foreach ($covers as $share):?>
-		        	<li><a href="<?php echo spUrl("detail","index", array("share_id"=> $share['share_id']));?>" class="trans07"><img src="<?php echo base_url($share['image_path'].'_square.jpg');?>" /></a></li>
+		        	<li><a href="<?php echo spUrl("detail","index", array("share_id"=> $share['share_id']));?>" class="trans07"><img class="w62" src="http://<?php echo $share['image_path'];?>" /></a></li>
 		        	<?php $num++;?>
 		        	<?php endforeach;?>
 		        	<?php for ($i=$num;$i<9;$i++):?>

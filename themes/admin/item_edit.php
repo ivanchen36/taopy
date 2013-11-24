@@ -12,8 +12,9 @@
 
 				<div class="control-group">
 					<label class="control-label" for="input01"></label>
-					<div class="controls" id="imgview"><img src="<?php echo base_url().$item['image_path'].'_middle.jpg';?>"/></div>
-					<input type="hidden" id="filename" name="filename" value="<?php echo base_url().$item['image_path'].'_middle.jpg';?>"/>
+                    <?php $img_pro = str_to_arr($share['img_pro'], ',');$height=(200/$img_pro['width'])*$img_pro['height'];?> 
+					<div class="controls" id="imgview"><img src="<?php echo $item['image_path'];?>" width="200" height="<?php echo $height;?>"/></div>
+                        <input type="hidden" id="filename" name="filename" value="<?php echo $item['image_path'];?>" width="200" height="<?php echo $height;?>"/>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="input01"><?php echo T('orgin_url');?></label>

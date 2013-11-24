@@ -89,11 +89,11 @@
 						</div>
              <div class="form_item second_div">
 							<div class="btn_select second_div weibo_select_list">
-			                	<input id="weibo_id" name="weibo_id" type="hidden" value="1" class="weibo_id">
-								<a href="javascript:void(0);" class="listbtn" data-action="weiboPopup1" data-params="category_select_div"><span class="label">微博：</span><span class="weibo_title">仅淘便宜</span><s><b></b></s></a>
+			                	<input id="weibo" name="weibo" type="hidden" value="1" class="weibo">
+								<a href="javascript:void(0);" class="listbtn" data-action="weiboPopup" data-params="category_select_div"><span class="label">微博：</span><span class="weibo_title">同步微博</span><s><b></b></s></a>
 			               		<ul>
-                                <li><a href="javascript:;">发布微博</a></li>
-                                <li><a href="javascript:;">仅淘便宜</a></li>
+                                <li><a data-params="1,同步微博,category_select_div" data-action="weiboItem" href="javascript:;">同步微博</a></li>
+                                <li><a data-params="2,匿名发布,category_select_div" data-action="weiboItem" href="javascript:;">匿名发布</a></li>
 			                	</ul>
 			            	</div>
 						</div>
@@ -130,12 +130,6 @@
 				</form>
 				<div class="clear"></div>
 			</div>
-			<div class="one_line">
-				<div class="image_list mt10">
-					<ul id="publish_image_list">
-					</ul>
-				</div>
-			</div>
 		</div>
 </script>
 <script type="text/template" id="item_edit_tpl" data-title="<?php echo T('edit').T('share');?>" data-edit-title="<?php echo T('edit').T('share');?>">
@@ -146,7 +140,7 @@
 					<a href="javascript:void(0);" class="prev disabled"
 						data-action="preImage" id="preImageBtn"><i></i>1</a>
 					<div>
-						<b id="upload_imgview_div"><img src="<?php echo base_url()?>{{share.image_path}}_middle.jpg?{{share.random}}"></b><i class="cover"><?php echo T('cover');?></i>
+						<b id="upload_imgview_div"><img src="{{share.image_path}}"></b><i class="cover"><?php echo T('cover');?></i>
 					</div>
 					<a href="javascript:void(0);" class="next disabled"
 						data-action="nextImage" id="nextImageBtn">2<i></i> </a>
@@ -222,7 +216,7 @@
 				<div class="image_list mt10">
 					<ul id="publish_image_list">
 						{{#share.images}}
-							<li data-action="publishPinItem" data-id="{{id}}" data-url="{{url}}" class="selected {{#cover}}cover{{/cover}}"><b><img src="<?php echo base_url();?>{{url}}_large.jpg?{{share.random}}"/></b><i></i><input type="text" value="{{desc}}" name="desc" placeholder="<?php echo T('type_some');?>"/></li>
+							<li data-action="publishPinItem" data-id="{{id}}" data-url="{{url}}" class="selected {{#cover}}cover{{/cover}}"><b><img src="{{url}}"/></b><i></i><input type="text" value="{{desc}}" name="desc" placeholder="<?php echo T('type_some');?>"/></li>
 						{{/share.images}}
 					</ul>
 				</div>

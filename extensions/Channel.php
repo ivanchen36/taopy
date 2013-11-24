@@ -141,7 +141,7 @@ class Channel {
 					$data['orgin_url'] = $good_info['orgin_url'];
 					$data['orgin_image_url'] = $good_info['orgin_img_url'];
 					$data['orgin_image_url_small'] = $good_info['orgin_img_url_small'];
-					$data['item_imgs'] = $good_info['item_imgs'];
+					$data['item_imgs'][0] = $good_info['item_imgs'][0];
 					$data['shop_name'] = $good_info['shop_name'];
 					/*$data['orgin_image'] = $image_data['orgin'];
 					 $data['middle_image'] = $image_data['middle'];

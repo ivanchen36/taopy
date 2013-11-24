@@ -110,11 +110,6 @@ class album extends basecontroller
 			$data['user_id'] = $user_id;
 			$data['album_title'] = $album_title;
 			$data['category_id'] = $category_id;
-			$album = $ptx_album->find_one($data);
-			if($album){
-				$this->ajax_failed_response(T('album_existed'));
-				return;
-			}
 			$album_id = $ptx_album->add_one($data);
 			if($album_id){
 				$data['album_id'] = $album_id;

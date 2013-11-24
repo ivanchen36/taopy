@@ -3048,21 +3048,13 @@ $(document).ready(function(a) {
 			submitHandler: function() {
 				var c = !1,
 					d = [];
-				a("#publish_image_list li.selected").each(function() {
-					var e = a(this).find("input"),
-						e = 0 == e.length ? "" : a(e).val();
-					if (140 < str_length(e)) return a("#ajax_share_message").html(getTip("img_desc_not_valid")), !1;
-					a(this).hasClass("cover") ? (e = {
-						url: a(this).attr("data-name"),
-						desc: e,
-						cover: !0
-					}, d.push(e), c = !0) : (e = {
-						url: a(this).attr("data-name"),
-						desc: e,
-						cover: !1
-					}, d.push(e))
-				});
-				if (!c) return a("#ajax_share_message").html(getTip("no_img_cover_selected")), !1;
+					e = {
+						url: a("#save_share_form #cover_filename").val(),
+						desc: "",
+						cover: 1
+					};
+					d.push(e);
+
 				a("#save_share_form #all_files").val(serialize(d));
 				a("#save_share_form").ajaxSubmit({
 					url: a("#save_share_form").attr("data-url"),
@@ -3552,13 +3544,15 @@ $(document).ready(function(a) {
 						f = 0;
 					a("#publish_image_list").html("");
 					for (var u = 0; u < e; u++) imageReady(b.data.images[u].src + "?" + d, "", function() {
+						console.log(b.data.images[u].src);
+						console.log(this.src);
 						if (this.width > min_fetch_width && this.height > min_fetch_height) {
 							var b = a('<li data-action="publishPinItem" data-name="' + this.src + '"><b><img src="' + this.src + '"/></b><i></i><input type="text" name="desc" placeholder="' + getTip("type_some") + '"/></li>');
 							a("#publish_image_list").prepend(b)
 						}
 					}, function() {
 						f++;
-						f === e && k()
+						f === e && k(this.src)
 					}, function() {
 						f++
 					});
@@ -3566,22 +3560,14 @@ $(document).ready(function(a) {
 					a("#share_type").val("images");
 					b.data.title && (a("#title").val(b.data.title).focus(), a("#publish_intro").val(b.data.title).focus());
 					a("#channel").val("others")
-				} else "channel" == d && (d = a(Mustache.to_html('{{#item_imgs}}<li data-action="publishPinItem" data-name="{{url}}"><b><img src="{{url}}_200x200.jpg"/></b><i></i><input type="text" name="desc" placeholder="' + getTip("type_some") + '"/></li>{{/item_imgs}}', b.data)), a("#publish_image_list").html(d), k(), a("#share_type").val("channel"), a("#item_id").val(b.data.item_id), a("#channel").val(b.data.channel), a("#title").val(b.data.name).focus(), a("#price").val(b.data.price).focus(), a("#old_price").val(b.data.price).focus(), a("#promotion_url").val(b.data.promotion_url).focus(), a("#publish_intro").val(b.data.name).focus(), a("#reference_url").val(a("#remote_url").val()));
+				} else "channel" == d && (k(b.data.orgin_image_url), a("#share_type").val("channel"), a("#item_id").val(b.data.item_id), a("#channel").val(b.data.channel), a("#title").val(b.data.name).focus(), a("#price").val(b.data.price).focus(), a("#old_price").val(b.data.price).focus(), a("#promotion_url").val(b.data.promotion_url).focus(), a("#publish_intro").val(b.data.name).focus(), a("#reference_url").val(a("#remote_url").val()));
 				a("#ajax_fetch_message").html(getTip("fetch-success"))
 			} else a("#ajax_fetch_message").html(getTip("fetch-faild")), c(b.message)
 		})
 	}
-	function k() {
-		var b;
-		b = a("#publish_image_list").find("li.cover");
-		var c = a("#publish_image_list").find("li");
-		0 == b.length && (0 == c.length ? a("#upload_imgview_div").html("") : a("#upload_imgview_div").html('<img src="' + a(c[0]).find("img").attr("src") + '"/>'));
-		c = a(b).next().length ? a(b).next() : c[0];
-		a(b).removeClass("cover");
-		a(c).addClass("cover");
-		b = a(c).find("img").attr("src");
-		a("#upload_imgview_div").html('<img src="' + b + '"/>');
-		a("#cover_filename").val(a(c).attr("data-name"))
+	function k(src) {
+		a("#upload_imgview_div").html('<img src="' + src + '"/>');
+		a("#cover_filename").val(src)
 	}
 	function p() {
 		var b = a("#album_select_div");
@@ -3765,6 +3751,13 @@ $(document).ready(function(a) {
 		g.hasClass("btn_select_hover") && g.removeClass("btn_select_hover");
 		g.find(".tg_select_title").html(c);
 		g.find(".tg_select_id").val(b);
+	}
+	function Q2(b, c, d) {
+		var f = a("#" + d),
+		g = f.find(".weibo_select_list");
+		g.hasClass("btn_select_hover") && g.removeClass("btn_select_hover");
+		g.find(".weibo_title").html(c);
+		g.find(".weibo").val(b);
 	}
 	function K(b, c, d) {
 		d = a("#" + d).find(".album_select_list");
@@ -4074,7 +4067,7 @@ $(document).ready(function(a) {
 							y2: 100,
 							handles: !0
 						})
-					})) : (a("#" + e).val(u), a("#" + f).html('<img src="' + r + '" style="max-width:' + h + "px;max-height: " + i + 'px;"/>'), u = a('<li data-action="publishPinItem" data-name="' + u + '" class="selected cover"><b><img src="' + r + '"/></b><i></i><input type="text" name="desc" placeholder="' + getTip("type_some") + '"/></li>'), a("#publish_image_list").find("li").removeClass("cover"), a("#publish_image_list").append(u))
+					})) : (a("#" + e).val(u), a("#" + f).html('<img src="' + r + '" style="max-width:' + h + "px;max-height: " + i + 'px;"/>'))
 				} else c(d.message)
 			}
 		})
@@ -4297,6 +4290,9 @@ $(document).ready(function(a) {
 			},
 			tgItemClick: function(a, b, c, d) {
 				Q1(b, c, d)
+			},
+			weiboItemClick: function(a, b, c, d) {
+				Q2(b, c, d)
 			},
 			albumItemPopupClick: function(a, b) {
 				m(b)
